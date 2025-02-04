@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ec0fe4d81d7dd5045b1b13be9ceb503e
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 307666
+  packageName: Reference Field Tweaker
+  packageVersion: 1.0
+  assetPath: Assets/ReferenceFieldTweaker/Demo/Scenes/DemoScene.unity
+  uploadId: 723733

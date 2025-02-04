@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fe427bdc406e74d478016429772f37e7
+AssemblyDefinitionReferenceImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 307666
+  packageName: Reference Field Tweaker
+  packageVersion: 1.0
+  assetPath: Assets/ReferenceFieldTweaker/Editor/ASoliman.Utils.EditableRefs.asmref
+  uploadId: 723733

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 4869e5359eead9749b78742c2f66b414
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 307666
+  packageName: Reference Field Tweaker
+  packageVersion: 1.0
+  assetPath: Assets/ReferenceFieldTweaker/Editor/TweakerMenu.cs
+  uploadId: 723733

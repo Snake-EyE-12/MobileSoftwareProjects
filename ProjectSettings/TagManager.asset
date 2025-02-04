@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -41,3 +41,29 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background Elements
+    uniqueID: 1083631365
+    locked: 0
+  - name: Background Features
+    uniqueID: 3333625047
+    locked: 0
+  - name: -3
+    uniqueID: 3297626757
+    locked: 0
+  - name: Floor Elements
+    uniqueID: 1338431495
+    locked: 0
+  - name: Floor Features
+    uniqueID: 751783035
+    locked: 0
+  - name: Horses
+    uniqueID: 3125040245
+    locked: 0
+  - name: World Items
+    uniqueID: 1029996959
+    locked: 0
+  - name: User Objects
+    uniqueID: 3545720843
+    locked: 0
+  m_RenderingLayers:
+  - Default

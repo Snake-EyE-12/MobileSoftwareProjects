@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 1c724ef01d0540346a0f7af24b531eb8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 307666
+  packageName: Reference Field Tweaker
+  packageVersion: 1.0
+  assetPath: Assets/ReferenceFieldTweaker/Editor/EditableRefAttributePropertyDrawer.cs
+  uploadId: 723733
