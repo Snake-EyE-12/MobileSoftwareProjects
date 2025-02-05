@@ -14,6 +14,13 @@ public class BettingManager : MonoBehaviour {
     [SerializeField] TextMeshProUGUI feedbackTxt;
     [SerializeField] Slider susSlider;
 
+    BetType betType;
+
+    public enum BetType {
+        Normal,
+        AllOrNothing
+    }
+
     void Start() {
         updateUI();
     }
@@ -24,27 +31,40 @@ public class BettingManager : MonoBehaviour {
 
     public void changeBet(bool low) {
         if (low) {
-            if (totalMoney < 100) {
-				betAmount -= changeBetAmount;
-				totalMoney += changeBetAmount;
-
-                if (suspicion > 0) suspicion -= 10;
-			}
-
+            if (betAmount > 0) {
+                betAmount -= changeBetAmount;
+                totalMoney += changeBetAmount;
+                suspicion -= 10;
+            } else {
+                feedback = "Your not even betting...";
+            }
         } else {
             if (totalMoney > 0) {
-				betAmount += changeBetAmount;
-				totalMoney -= changeBetAmount;
-
-                if (suspicion < maxSuspicion) suspicion += 10;
-			}
+                betAmount += changeBetAmount;
+                totalMoney -= changeBetAmount;
+                suspicion += 10;
+            } else {
+                feedback = "Got nothing else to give...";
+            }
 		}
 
 		updateUI();
 	}
 
     public void confirmBet() {
-    
+        if (betAmount > 0) {
+            feedback = "Bet placed good luck!!!";
+
+            if (totalMoney == 0) {
+                betType = BetType.AllOrNothing;
+            } else {
+                betType = BetType.Normal;
+            } 
+        } else {
+            feedback = "Need to bet something...";
+        }
+
+        updateUI();
     }
 
     public void updateUI() {
