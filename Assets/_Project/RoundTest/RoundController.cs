@@ -35,7 +35,7 @@ public class RoundController : MonoBehaviour
         instance = this;
     }
 
-    public void RaceResults(bool playerWon)
+    public void RaceResults(RaceResults playerWon)
     {
 
     }

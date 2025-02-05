@@ -71,17 +71,17 @@ public class RaceController : MonoBehaviour
 
     private void PlayerLose()
     {
-        RoundController.instance.RaceResults(false);
+        RoundController.instance.RaceResults(RaceResults.Lose);
     }
 
     private void PlayerCaughtCheating()
     {
-        RoundController.instance.RaceResults(false);
+        RoundController.instance.RaceResults(RaceResults.CaughtCheating);
     }
 
     private void PlayerWin()
     {
-        RoundController.instance.RaceResults(true);
+        RoundController.instance.RaceResults(RaceResults.Win);
     }
 
     private float lastMarginPosition;
