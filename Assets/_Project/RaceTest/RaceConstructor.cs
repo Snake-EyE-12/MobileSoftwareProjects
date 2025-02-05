@@ -3,38 +3,32 @@ using UnityEngine;
 
 public class RaceConstructor : MonoBehaviour
 {
-    public int LaneCount { get; set; }
-    [SerializeField] private Lane playerLanePrefab;
+    [SerializeField] private int laneCount;
+    [SerializeField] private float separation;
     [SerializeField] private Lane lanePrefab;
-    private List<Lane> lanes = new List<Lane>();
+    [SerializeField] private HorseData horsePrefab;
     
 
-    public void Construct()
+    public void Construct(float scale)
     {
-        if (LaneCount < 1) return;
-        BuildPlayerLane();
-        for (int i = 0; i < LaneCount - 1; i++)
+        for (int i = 0; i < laneCount; i++)
         {
-            BuildLane(i + 1);
+            Vector3 pos = Vector3.down * i * separation;
+            BuildLane(pos);
+            BuildHorse(pos, i == 0);
         }
     }
-    public List<Lane> GetLanes() => lanes;
+    private void BuildLane(Vector3 position)
+    {
+        Lane lane = Instantiate(lanePrefab, transform);
+        lane.transform.position = position;
+    }
 
-    private Vector3 GetOrigin()
+    private void BuildHorse(Vector3 position, bool player)
     {
-        return transform.position;
-    }
-    private void BuildPlayerLane()
-    {
-        Lane lane = Instantiate(playerLanePrefab, GetOrigin(), Quaternion.identity);
-        lane.SpawnHorse();
-        lanes.Add(lane);
-    }
-    private void BuildLane(int laneNumber)
-    {
-        Lane lane = Instantiate(lanePrefab, transform.position + Vector3.down * laneNumber, Quaternion.identity);
-        lane.SpawnHorse();
-        lanes.Add(lane);
+        HorseData horse = Instantiate(horsePrefab, transform);
+        horse.transform.position = position;
+        if(player) horse.gameObject.AddComponent<Jockey>();
     }
 
 }
