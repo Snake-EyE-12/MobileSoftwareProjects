@@ -71,17 +71,17 @@ public class RaceController : MonoBehaviour
 
     private void PlayerLose()
     {
-        
+        RoundController.instance.RaceResults(RaceResults.Lose);
     }
 
     private void PlayerCaughtCheating()
     {
-        
+        RoundController.instance.RaceResults(RaceResults.CaughtCheating);
     }
 
     private void PlayerWin()
     {
-        
+        RoundController.instance.RaceResults(RaceResults.Win);
     }
 
     private float lastMarginPosition;
@@ -131,4 +131,11 @@ public class RaceController : MonoBehaviour
     }
 
 
+}
+
+public enum RaceResults
+{
+    Win,
+    Lose,
+    CaughtCheating
 }

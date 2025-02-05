@@ -30,6 +30,16 @@ public class RoundController : MonoBehaviour
 
     GameState prevState;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    public void RaceResults(RaceResults playerWon)
+    {
+
+    }
+
     void Start()
     {
         // Load Main Menu when app starts
