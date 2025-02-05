@@ -7,19 +7,17 @@ public class RaceController : MonoBehaviour
     [SerializeField] private RaceConstructor constructor;
     [SerializeField] private float tickDelay;
     [SerializeField] private Margin margin;
-    
+    [SerializeField] private Transform scalar;
     [Button]
     private void Build()
     {
-        constructor.LaneCount = 4;
-        constructor.Construct();
+        constructor.Construct(GetScaleMultiplier());
+        scalar.localScale = GetScaleMultiplier() * Vector3.one;
     }
-
-
+    
     private void Update()
     {
         AdvanceRace();
-        
     }
 
     private float TimeToTickHorses;
@@ -30,18 +28,25 @@ public class RaceController : MonoBehaviour
         PositionMargin();
     }
 
+    private float lastMarginPosition;
     private void PositionMargin()
     {
-        margin.SetMarginStartX(GetPositionOfNonPlayerFirstPlaceHorse().x);
+        lastMarginPosition = margin.SetMarginStartX(GetPositionOfNonPlayerFirstPlaceHorse());
     }
 
-    private Vector3 GetPositionOfNonPlayerFirstPlaceHorse()
+    [SerializeField] private float scaleMultiplier;
+    public float GetScaleMultiplier()
     {
-        Vector3 furthest = Vector3.negativeInfinity;
-        foreach (var lane in constructor.GetLanes())
+        return Screen.width / (float)Screen.height * scaleMultiplier;
+    }
+
+    private float GetPositionOfNonPlayerFirstPlaceHorse()
+    {
+        float furthest = -1;
+        foreach (var horse in HorseData.horses)
         {
-            if(lane is PlayerLane) continue;
-            if(lane.GetHorsePosition().x > furthest.x) furthest = lane.GetHorsePosition();
+            if(horse.IsPlayer) continue;
+            if (horse.GetTotalDistanceTraveled > furthest) furthest = horse.GetTotalDistanceTraveled;
         }
 
         return furthest;
@@ -50,9 +55,9 @@ public class RaceController : MonoBehaviour
     private void TickHorses()
     {
         TimeToTickHorses = Time.time + tickDelay;
-        foreach (var lane in constructor.GetLanes())
+        foreach (var horse in HorseData.horses)
         {
-            lane.AdvanceHorses();
+            horse.Advance();
         }
     }
 
@@ -68,4 +73,6 @@ public class RaceController : MonoBehaviour
     {
         racing = false;
     }
+
+
 }

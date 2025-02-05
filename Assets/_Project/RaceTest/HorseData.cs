@@ -2,19 +2,34 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Horse : MonoBehaviour
+public class HorseData : MonoBehaviour
 {
-    public bool IsPlayerHorse { get; set; }
+    public static List<HorseData> horses = new();
+    
+    
     [SerializeField] private float baseMoveSpeed;
     [SerializeField, Range(0, 1)] private float travelChance;
-    [SerializeField] private Destinator destinator;
     private List<SpeedModifier> speedModifiers = new();
+
+    public bool IsPlayer => jockey != null;
+    
+    private Jockey jockey;
+    private void Start()
+    {
+        horses.Add(this);
+        if (TryGetComponent(out Jockey jockey))
+        {
+            this.jockey = jockey;
+        }
+    }
+
     public void AddBonusMoveSpeedMultiplier(SpeedModifier multiplier)
     {
         speedModifiers.Add(multiplier);
     }
+    
 
-    private float GetMoveSpeed()
+    private float GetTickDistance()
     {
         for (int i = speedModifiers.Count - 1; i >= 0; i--)
         {
@@ -30,14 +45,17 @@ public class Horse : MonoBehaviour
         return moveSpeed;
     }
 
-    public void Tick()
+    private float totalDistanceTraveled;
+    public void Advance()
     {
-        if(PassChance()) destinator.Move((Vector2)transform.position + Vector2.right * GetMoveSpeed());
+        if(PassChance()) totalDistanceTraveled += GetTickDistance();
     }
     private bool PassChance()
     {
         return UnityEngine.Random.Range(0f, 1f) < travelChance;
     }
+
+    public float GetTotalDistanceTraveled => totalDistanceTraveled;
 }
 
 public class SpeedModifier
