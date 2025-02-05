@@ -25,8 +25,12 @@ public class BettingManager : MonoBehaviour {
         updateUI();
     }
 
-    void Update() {
-        
+    public void setValues(int total, int bet, int changeBet, float sus, float maxSus) {
+        totalMoney = total;
+        betAmount = bet;
+        changeBetAmount = changeBet;
+        suspicion = sus;
+        maxSuspicion = maxSus;
     }
 
     public void changeBet(bool low) {
