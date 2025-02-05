@@ -5,7 +5,11 @@ public class Margin : MonoBehaviour
     [SerializeField] private float distance;
     public void SetMarginDistance(float distance) => this.distance = distance;
     private float marginStartX;
-    public void SetMarginStartX(float startX) => marginStartX = startX;
+    public float SetMarginStartX(float startX)
+    {
+        marginStartX = startX;
+        return startX + distance;
+    }
 
     private void Update()
     {

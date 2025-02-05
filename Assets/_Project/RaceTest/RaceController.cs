@@ -7,19 +7,20 @@ public class RaceController : MonoBehaviour
     [SerializeField] private RaceConstructor constructor;
     [SerializeField] private float tickDelay;
     [SerializeField] private Margin margin;
-    
+    [SerializeField] private Transform scalar;
+    [SerializeField] private float raceDistance;
+    [SerializeField] private Transform endFlag;
     [Button]
     private void Build()
     {
-        constructor.LaneCount = 4;
-        constructor.Construct();
+        constructor.Construct(GetScaleMultiplier());
+        endFlag.position = new Vector3(raceDistance, endFlag.position.y, endFlag.position.z);
+        scalar.localScale = GetScaleMultiplier() * Vector3.one;
     }
-
-
+    
     private void Update()
     {
         AdvanceRace();
-        
     }
 
     private float TimeToTickHorses;
@@ -28,20 +29,80 @@ public class RaceController : MonoBehaviour
         if(!racing) return;
         if (TimeToTickHorses < Time.time) TickHorses();
         PositionMargin();
+        CheckWin();
     }
 
+    private void CheckWin() //Player Wins Ties atm
+    {
+        HorseData winningHorse = null;
+        float furthestDistance = -1;
+        foreach (var horse in HorseData.horses)
+        {
+            if(horse.IsPlayer) continue;
+            if (horse.GetTotalDistanceTraveled > furthestDistance)
+            {
+                winningHorse = horse;
+                furthestDistance = horse.GetTotalDistanceTraveled;
+            }
+        }
+        if (furthestDistance > raceDistance + 2)
+        {
+            OnHorseReachedEnd(winningHorse, furthestDistance);
+            Debug.Log("We Have A Winner");
+        }
+    }
+
+    private void OnHorseReachedEnd(HorseData horse, float distance)
+    {
+        racing = false;
+        if (!horse.IsPlayer)
+        {
+            PlayerLose();
+            return;
+        }
+
+        if (distance > lastMarginPosition)
+        {
+            PlayerCaughtCheating();
+            return;
+        }
+        PlayerWin();
+    }
+
+    private void PlayerLose()
+    {
+        
+    }
+
+    private void PlayerCaughtCheating()
+    {
+        
+    }
+
+    private void PlayerWin()
+    {
+        
+    }
+
+    private float lastMarginPosition;
     private void PositionMargin()
     {
-        margin.SetMarginStartX(GetPositionOfNonPlayerFirstPlaceHorse().x);
+        lastMarginPosition = margin.SetMarginStartX(GetPositionOfNonPlayerFirstPlaceHorse());
     }
 
-    private Vector3 GetPositionOfNonPlayerFirstPlaceHorse()
+    [SerializeField] private float scaleMultiplier;
+    public float GetScaleMultiplier()
     {
-        Vector3 furthest = Vector3.negativeInfinity;
-        foreach (var lane in constructor.GetLanes())
+        return Screen.width / (float)Screen.height * scaleMultiplier;
+    }
+
+    private float GetPositionOfNonPlayerFirstPlaceHorse()
+    {
+        float furthest = -1;
+        foreach (var horse in HorseData.horses)
         {
-            if(lane is PlayerLane) continue;
-            if(lane.GetHorsePosition().x > furthest.x) furthest = lane.GetHorsePosition();
+            if(horse.IsPlayer) continue;
+            if (horse.GetTotalDistanceTraveled > furthest) furthest = horse.GetTotalDistanceTraveled;
         }
 
         return furthest;
@@ -50,9 +111,9 @@ public class RaceController : MonoBehaviour
     private void TickHorses()
     {
         TimeToTickHorses = Time.time + tickDelay;
-        foreach (var lane in constructor.GetLanes())
+        foreach (var horse in HorseData.horses)
         {
-            lane.AdvanceHorses();
+            horse.Advance();
         }
     }
 
@@ -68,4 +129,6 @@ public class RaceController : MonoBehaviour
     {
         racing = false;
     }
+
+
 }
