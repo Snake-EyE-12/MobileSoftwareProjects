@@ -247,6 +247,8 @@ MonoBehaviour:
   tickDelay: 1
   margin: {fileID: 738905670}
   scalar: {fileID: 874882834}
+  raceDistance: 9
+  endFlag: {fileID: 516429364}
   scaleMultiplier: 3
 --- !u!4 &849809363
 Transform:
