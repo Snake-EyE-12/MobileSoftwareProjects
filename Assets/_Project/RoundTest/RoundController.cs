@@ -30,7 +30,7 @@ public class RoundController : MonoBehaviour
 
     GameState prevState;
 
-    private void Awake()
+	private void Awake()
     {
         instance = this;
     }

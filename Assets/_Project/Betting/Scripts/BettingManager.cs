@@ -13,13 +13,9 @@ public class BettingManager : MonoBehaviour {
     [SerializeField] TextMeshProUGUI betMoneyTxt;
     [SerializeField] TextMeshProUGUI feedbackTxt;
     [SerializeField] Slider susSlider;
+    [SerializeField] BetType betType;
 
-    BetType betType;
-
-    public enum BetType {
-        Normal,
-        AllOrNothing
-    }
+    public Bet userBet;
 
     void Start() {
         updateUI();
@@ -68,6 +64,8 @@ public class BettingManager : MonoBehaviour {
             feedback = "Need to bet something...";
         }
 
+        userBet = new Bet(betAmount, suspicion, betType);
+
         updateUI();
     }
 
@@ -77,4 +75,20 @@ public class BettingManager : MonoBehaviour {
 		feedbackTxt.text = feedback;
 		susSlider.value = suspicion / maxSuspicion;
 	}
+}
+public enum BetType {
+    Normal,
+    AllOrNothing
+}
+
+public class Bet {
+    public int betAmount;
+    public float suspicion;
+    public BetType betType;
+
+    public Bet(int bet, float sus, BetType type) {
+        betAmount = bet;
+        suspicion = sus;
+        betType = type;
+    }
 }
