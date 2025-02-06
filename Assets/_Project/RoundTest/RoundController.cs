@@ -35,6 +35,11 @@ public class RoundController : MonoBehaviour
         instance = this;
     }
 
+    public void BetData(Bet bet)
+    {
+
+    }
+
     public void RaceResults(RaceResults results)
     {
         if (results == global::RaceResults.Win)
