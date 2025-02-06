@@ -35,9 +35,12 @@ public class RoundController : MonoBehaviour
         instance = this;
     }
 
-    public void RaceResults(RaceResults playerWon)
+    public void RaceResults(RaceResults results)
     {
+        if (results == global::RaceResults.Win)
+        {
 
+        }
     }
 
     void Start()
@@ -56,31 +59,31 @@ public class RoundController : MonoBehaviour
             // Unloads old scenes
             switch (prevState)
             {
-                case GameState.MAIN: SceneManager.UnloadSceneAsync(Main.name); break;
+                case GameState.MAIN: try { SceneManager.UnloadSceneAsync(Main.name); } catch { } break;
                 case GameState.SETTINGS: break;
-                case GameState.BETTING: SceneManager.UnloadSceneAsync(Betting.name); break;
-                case GameState.RACING: break;
-                case GameState.RACE_START: break;
-                case GameState.RACE_END: SceneManager.UnloadSceneAsync(Racing.name); break;
-                case GameState.RESULTS: break;
-                case GameState.WIN: break;
-                case GameState.LOSE: break;
-                default: break;
-            }
+                    case GameState.BETTING: SceneManager.UnloadSceneAsync(Betting.name); break;
+                    case GameState.RACING: break;
+                    case GameState.RACE_START: break;
+                    case GameState.RACE_END: SceneManager.UnloadSceneAsync(Racing.name); break;
+                    case GameState.RESULTS: break;
+                    case GameState.WIN: break;
+                    case GameState.LOSE: break;
+                    default: break;
+                    }
 
-            // Loads new scenes
-            switch (State)
-            {
-                case GameState.MAIN: SceneManager.LoadScene(Main.name, LoadSceneMode.Additive); break;
-                case GameState.SETTINGS: break;
-                case GameState.BETTING: SceneManager.LoadScene(Betting.name, LoadSceneMode.Additive); break;
-                case GameState.RACE_START: SceneManager.LoadScene(Racing.name, LoadSceneMode.Additive); break;
-                case GameState.RESULTS: break;
-                case GameState.WIN: break;
-                case GameState.LOSE: break;
-                default: break;
-            }
-        }
+                    // Loads new scenes
+                    switch (State)
+                    {
+                        case GameState.MAIN: SceneManager.LoadScene(Main.name, LoadSceneMode.Additive); break;
+                        case GameState.SETTINGS: break;
+                        case GameState.BETTING: SceneManager.LoadScene(Betting.name, LoadSceneMode.Additive); break;
+                        case GameState.RACE_START: SceneManager.LoadScene(Racing.name, LoadSceneMode.Additive); break;
+                        case GameState.RESULTS: break;
+                        case GameState.WIN: break;
+                        case GameState.LOSE: break;
+                        default: break;
+                    }
+                    }
 
         prevState = State;
 

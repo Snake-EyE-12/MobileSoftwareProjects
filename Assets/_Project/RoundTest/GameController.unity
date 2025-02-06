@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Main: {fileID: 102900000, guid: 352101825a69e3f419da59f51ab747f6, type: 3}
-  Betting: {fileID: 102900000, guid: df80d6f2e6bd61d499f8bf3348d07761, type: 3}
-  Racing: {fileID: 102900000, guid: 362f34776626d0047ad8eea0a00e27e9, type: 3}
+  Betting: {fileID: 102900000, guid: 64c8b33844691574889583905f67f4ca, type: 3}
+  Racing: {fileID: 102900000, guid: aa6b024fdfc0faf4c9d72396eb275cf9, type: 3}
   State: 0
 --- !u!4 &420129910
 Transform:
