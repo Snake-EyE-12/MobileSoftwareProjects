@@ -15,8 +15,6 @@ public class BettingManager : MonoBehaviour {
     [SerializeField] Slider susSlider;
     [SerializeField] BetType betType;
 
-    public Bet userBet;
-
     void Start() {
         updateUI();
     }
@@ -90,5 +88,16 @@ public class Bet {
         betAmount = bet;
         suspicion = sus;
         betType = type;
+    }
+
+    public void win(bool win) {
+        switch (betType) {
+            case BetType.Normal:
+                betAmount = win ? betAmount += betAmount : betAmount -= betAmount;
+                break;
+            case BetType.AllOrNothing:
+                betAmount = win ? betAmount *= 4 : betAmount -= betAmount;
+                break;
+        }
     }
 }
