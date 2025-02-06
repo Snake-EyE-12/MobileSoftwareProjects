@@ -11,7 +11,7 @@ public class RaceController : MonoBehaviour
     [SerializeField] private float raceDistance;
     [SerializeField] private Transform endFlag;
     [Button]
-    private void Build()
+    public void Build()
     {
         constructor.Construct(GetScaleMultiplier());
         endFlag.position = new Vector3(raceDistance, endFlag.position.y, endFlag.position.z);
