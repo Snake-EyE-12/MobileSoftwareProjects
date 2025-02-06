@@ -64,7 +64,7 @@ public class BettingManager : MonoBehaviour {
             feedback = "Need to bet something...";
         }
 
-        
+        RoundController.instance.BetData(new Bet(betAmount, suspicion, betType));
 
         updateUI();
     }
