@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public enum GameState
 {
+    STARTUP,
     MAIN,
-    SETTINGS,
     BETTING,
     RACE_START,
     RACING,
@@ -21,8 +21,10 @@ public class RoundController : MonoBehaviour
 
     [Header("Scenes")]
     [SerializeField, Space(5)] SceneAsset Main;       // Main Menu Scene
-    [SerializeField, Space(5)] SceneAsset Betting;   // Betting Scene
-    [SerializeField, Space(5)] SceneAsset Racing;   // Racing Scene
+    [SerializeField, Space(5)] SceneAsset Betting;    // Betting Scene
+    [SerializeField, Space(5)] SceneAsset Racing;     // Racing Scene
+    [SerializeField, Space(5)] SceneAsset Win;        // Win Scene
+    [SerializeField, Space(5)] SceneAsset Lose;       // Lose Scene
 
     [Space(10)]
     [Header("Current State"), Space(5)]
@@ -51,7 +53,7 @@ public class RoundController : MonoBehaviour
     void Start()
     {
         // Load Main Menu when app starts
-        SceneManager.LoadScene(Main.name, LoadSceneMode.Additive);
+        State = GameState.MAIN;
 
         // Load important/persistent data here
     }
@@ -65,39 +67,31 @@ public class RoundController : MonoBehaviour
             switch (prevState)
             {
                 case GameState.MAIN: try { SceneManager.UnloadSceneAsync(Main.name); } catch { } break;
-                case GameState.SETTINGS: break;
-                    case GameState.BETTING: SceneManager.UnloadSceneAsync(Betting.name); break;
-                    case GameState.RACING: break;
-                    case GameState.RACE_START: break;
-                    case GameState.RACE_END: SceneManager.UnloadSceneAsync(Racing.name); break;
-                    case GameState.RESULTS: break;
-                    case GameState.WIN: break;
-                    case GameState.LOSE: break;
-                    default: break;
-                    }
+                case GameState.BETTING: try { SceneManager.UnloadSceneAsync(Betting.name); } catch { } break;
+                case GameState.RACING: try { SceneManager.UnloadSceneAsync(Racing.name); } catch { } break; 
+                case GameState.WIN: try { SceneManager.UnloadSceneAsync(Win.name); } catch { } break;
+                case GameState.LOSE: try { SceneManager.UnloadSceneAsync(Lose.name); } catch { } break;
+                default: break;  // Loading screen?
+            }
 
-                    // Loads new scenes
-                    switch (State)
-                    {
-                        case GameState.MAIN: SceneManager.LoadScene(Main.name, LoadSceneMode.Additive); break;
-                        case GameState.SETTINGS: break;
-                        case GameState.BETTING: SceneManager.LoadScene(Betting.name, LoadSceneMode.Additive); break;
-                        case GameState.RACE_START: SceneManager.LoadScene(Racing.name, LoadSceneMode.Additive); break;
-                        case GameState.RESULTS: break;
-                        case GameState.WIN: break;
-                        case GameState.LOSE: break;
-                        default: break;
-                    }
-                    }
+            // Loads new scenes
+            switch (State)
+            {
+                case GameState.MAIN: SceneManager.LoadScene(Main.name, LoadSceneMode.Additive); break;
+                case GameState.BETTING: SceneManager.LoadScene(Betting.name, LoadSceneMode.Additive); break;
+                case GameState.RACING: SceneManager.LoadScene(Racing.name, LoadSceneMode.Additive); break;
+                case GameState.WIN: SceneManager.LoadScene(Win.name, LoadSceneMode.Additive); break;
+                case GameState.LOSE: SceneManager.LoadScene(Lose.name, LoadSceneMode.Additive); break;
+                default: break;  // Loading screen?
+            }
 
-        prevState = State;
+            prevState = State;
+        }
 
+        // Main Game State Machine
         switch (State)
         {
             case GameState.MAIN:
-                break;
-
-            case GameState.SETTINGS:
                 break;
 
             case GameState.BETTING:
@@ -107,6 +101,7 @@ public class RoundController : MonoBehaviour
                 break;
 
             case GameState.RACE_START:
+                State = GameState.RACING;
                 break;
 
             case GameState.RACE_END:

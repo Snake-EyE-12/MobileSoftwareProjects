@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 317042647}
   - component: {fileID: 317042646}
   - component: {fileID: 317042645}
-  - component: {fileID: 317042644}
+  - component: {fileID: 317042648}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -159,19 +159,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &317042644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317042642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc43f56569a9a684599912cbdabec016, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: GameSetup
 --- !u!114 &317042645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,9 +203,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 317042644}
-        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: ChangeScene
+      - m_Target: {fileID: 317042648}
+        m_TargetAssemblyTypeName: StateChanger, Assembly-CSharp
+        m_MethodName: ChangeState
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -266,6 +253,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317042642}
   m_CullTransparentMesh: 1
+--- !u!114 &317042648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317042642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc43f56569a9a684599912cbdabec016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newState: 2
 --- !u!1 &628745980
 GameObject:
   m_ObjectHideFlags: 0

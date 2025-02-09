@@ -148,9 +148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c1c3f7bfd10964ba6ae480fe3fe611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Main: {fileID: 102900000, guid: 352101825a69e3f419da59f51ab747f6, type: 3}
+  Main: {fileID: 102900000, guid: 9f758d3e2f6baf040a2c32c4392e6b98, type: 3}
   Betting: {fileID: 102900000, guid: 64c8b33844691574889583905f67f4ca, type: 3}
   Racing: {fileID: 102900000, guid: aa6b024fdfc0faf4c9d72396eb275cf9, type: 3}
+  Win: {fileID: 0}
+  Lose: {fileID: 0}
   State: 0
 --- !u!4 &420129910
 Transform:
