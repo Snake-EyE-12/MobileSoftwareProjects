@@ -8,7 +8,7 @@ public class HorseVisual : MonoBehaviour
     private Vector3 targetPosition;
     private void Update()
     {
-        targetPosition = new Vector3(data.GetTotalDistanceTraveled, transform.position.y, transform.position.z);
+        //targetPosition = new Vector3(data.GetTotalDistanceTraveled, transform.position.y, transform.position.z);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
     }
 }

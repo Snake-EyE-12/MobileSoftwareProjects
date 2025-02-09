@@ -40,7 +40,7 @@ public class RoundController : MonoBehaviour
 
     }
 
-    public void RaceResults(RaceResults results)
+    public void SetRaceResult(RaceResults results)
     {
         if (results == global::RaceResults.Win)
         {

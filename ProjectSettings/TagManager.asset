@@ -65,5 +65,11 @@ TagManager:
   - name: User Objects
     uniqueID: 3545720843
     locked: 0
+  - name: Roofs
+    uniqueID: 1040163363
+    locked: 0
+  - name: Indicators
+    uniqueID: 500904947
+    locked: 0
   m_RenderingLayers:
   - Default
