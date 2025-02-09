@@ -588,6 +588,7 @@ MonoBehaviour:
   flagPrefab: {fileID: 279605492508822640, guid: 23faa7e46c50536418fe1fa6aabe5d26, type: 3}
   gatePrefab: {fileID: 8334754030462505711, guid: 754abe0d15e3ff9498bc218d4ce8745d, type: 3}
   horsePrefab: {fileID: 4489184180683603042, guid: b3077e1715fe61a4fb59503d5b71ea96, type: 3}
+  SerializeTransform: {fileID: 1890341641}
 --- !u!114 &1204233810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,6 +765,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1890341640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1890341641}
+  m_Layer: 0
+  m_Name: InstantiateTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1890341641
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890341640}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -773,3 +805,4 @@ SceneRoots:
   - {fileID: 872907426}
   - {fileID: 1729477529}
   - {fileID: 486430813}
+  - {fileID: 1890341641}

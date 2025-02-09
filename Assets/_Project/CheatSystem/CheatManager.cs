@@ -38,10 +38,10 @@ public class CheatManager : MonoBehaviour
         }
     }
 
+    [SerializeReference] private List<CheatEffect> cheatEffects = new();
     private void GenerateRaceEffect()
     {
-        cheatEffects[Random.Range(0, cheatEffects.Count)].Apply();
+        if (cheatEffects.Count > 0) cheatEffects[Random.Range(0, cheatEffects.Count)].Apply();
     }
-    [SerializeReference] private List<CheatEffect> cheatEffects = new();
     
 }

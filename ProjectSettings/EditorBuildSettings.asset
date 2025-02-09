@@ -18,8 +18,8 @@ EditorBuildSettings:
     path: Assets/_Project/Betting/Betting.unity
     guid: 64c8b33844691574889583905f67f4ca
   - enabled: 1
-    path: Assets/_Project/RaceTest/Race.unity
-    guid: aa6b024fdfc0faf4c9d72396eb275cf9
+    path: Assets/_Project/LongRace/Race.unity
+    guid: cf84de38400676741930b6a88a6292ff
   m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3c9bc4e68216dd547b645610356e3968, type: 3}
   m_UseUCBPForAssetBundles: 0
