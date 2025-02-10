@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
 public class VisualHorseStateController : MonoBehaviour
@@ -134,6 +135,7 @@ public class DazedState : HorseState
     public override void OnExit(VisualHorseStateController controller)
     {
         controller.SetStars(false);
+        UnityEditor.EditorApplication.ExitPlaymode();
     }
     public override void OnUpdate(VisualHorseStateController controller) { }
 }
