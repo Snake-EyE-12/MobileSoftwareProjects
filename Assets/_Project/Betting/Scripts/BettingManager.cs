@@ -11,20 +11,27 @@ public class BettingManager : MonoBehaviour {
     [SerializeField] float maxSuspicion;
     [SerializeField] TextMeshProUGUI totalMoneyTxt;
     [SerializeField] TextMeshProUGUI betMoneyTxt;
+    [SerializeField] TextMeshProUGUI roundTxt;
     [SerializeField] TextMeshProUGUI feedbackTxt;
     [SerializeField] Slider susSlider;
     [SerializeField] BetType betType;
+    [SerializeField] int curRound;
+    [SerializeField] int maxRound;
 
     void Start() {
         updateUI();
     }
 
-    public void setValues(int total, int bet, int changeBet, float sus, float maxSus) {
+    public void setValues(int total, int bet, int changeBet, float sus, float maxSus, int round, int maxRounds) {
         totalMoney = total;
         betAmount = bet;
         changeBetAmount = changeBet;
         suspicion = sus;
         maxSuspicion = maxSus;
+        curRound = round;
+        maxRound = maxRounds;
+        
+        updateUI();
     }
 
     public void changeBet(bool low) {
@@ -72,6 +79,7 @@ public class BettingManager : MonoBehaviour {
 		betMoneyTxt.text = "$" + betAmount;
 		feedbackTxt.text = feedback;
 		susSlider.value = suspicion / maxSuspicion;
+        roundTxt.text = $"Round: {curRound}/{maxRound}";
 	}
 }
 public enum BetType {
