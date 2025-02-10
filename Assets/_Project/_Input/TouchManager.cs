@@ -1,16 +1,23 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TouchManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public static TouchManager instance;
 
-    // Update is called once per frame
-    void Update()
+    private PlayerInput playerInput;
+
+    public InputAction touchPositionAction;
+    public InputAction touchPressAction;
+    public InputAction touchHoldAction;
+
+    private void Awake()
     {
-        
+        instance = this;
+
+        playerInput = GetComponent<PlayerInput>();
+        touchPositionAction = playerInput.actions["TouchPosition"];
+        touchPressAction = playerInput.actions["TouchPress"];
+        touchHoldAction = playerInput.actions["TouchHold"];
     }
 }
