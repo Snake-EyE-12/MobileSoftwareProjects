@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/_Project/RaceTest/Race.unity
-    guid: aa6b024fdfc0faf4c9d72396eb275cf9
-  - enabled: 1
     path: Assets/_Project/Betting/Betting.unity
     guid: 64c8b33844691574889583905f67f4ca
+  - enabled: 1
+    path: Assets/_Project/LongRace/Race.unity
+    guid: cf84de38400676741930b6a88a6292ff
   - enabled: 1
     path: Assets/_Project/MainMenu/MainMenu.unity
     guid: 9f758d3e2f6baf040a2c32c4392e6b98
