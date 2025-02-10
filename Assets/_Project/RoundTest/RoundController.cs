@@ -39,6 +39,22 @@ public class RoundController : MonoBehaviour
         }
     }
 
+    public void ExitGame()
+    {
+        switch (State)
+        {
+            case GameState.MAIN:
+#if UNITY_EDITOR 
+                UnityEditor.EditorApplication.ExitPlaymode();
+#else
+                Application.Quit();
+#endif
+                break;
+
+            default: State = GameState.MAIN; break;
+        }
+    }
+
     private void Awake() { instance = this; }
 
     void Start()
