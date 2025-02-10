@@ -17,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Betting/Betting.unity
     guid: 64c8b33844691574889583905f67f4ca
+  - enabled: 1
+    path: Assets/_Project/MainMenu/MainMenu.unity
+    guid: 9f758d3e2f6baf040a2c32c4392e6b98
+  - enabled: 1
+    path: Assets/_Project/Betting/End.unity
+    guid: f9f277568609a414d8310f396a84ade7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -33,6 +33,20 @@ public class RacerUI : MonoBehaviour {
     }
 
     public void updateUI() {
-    
+        timerTxt.text = "Time: " + time;
+        betTxt.text = "Bet: " + betAmount;
+        susBar.value = suspicion / maxSuspicion;
+
+        for (int i = 0; i <= warningImages.Length; i++) {
+            if (warnings <= 0) continue;
+
+            if (i <= warnings) {
+                warningImages[i - 1] = possibleWarningImages[1];
+            } else {
+				warningImages[i - 1] = possibleWarningImages[0];
+			}
+        }
+
+        //set betImg based on betType
     }
 }
