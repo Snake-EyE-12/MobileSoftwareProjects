@@ -148,10 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c1c3f7bfd10964ba6ae480fe3fe611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Main: {fileID: 102900000, guid: 352101825a69e3f419da59f51ab747f6, type: 3}
-  Betting: {fileID: 102900000, guid: 64c8b33844691574889583905f67f4ca, type: 3}
-  Racing: {fileID: 102900000, guid: aa6b024fdfc0faf4c9d72396eb275cf9, type: 3}
-  State: 0
+  State: 7
 --- !u!4 &420129910
 Transform:
   m_ObjectHideFlags: 0
@@ -167,8 +164,119 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1603392061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1603392063}
+  - component: {fileID: 1603392062}
+  - component: {fileID: 1603392064}
+  m_Layer: 0
+  m_Name: TouchManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1603392062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603392061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 3c9bc4e68216dd547b645610356e3968, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 10349ad7-7793-4852-9c48-2735d67722d4
+    m_ActionName: 'Touch/TouchPosition[/Simulated Touchscreen/position]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: aac465d8-7878-4469-aebb-a4fe1b8f9228
+    m_ActionName: 'Touch/TouchPress[/Simulated Touchscreen/press]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Touch
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!4 &1603392063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603392061}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1603392064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603392061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90be80c508dc36b438e315fface6865a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchPositionAction:
+    m_Name: Touch Position
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 24fbc3d7-3f45-4668-bf16-e68fcac7a477
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  touchPressAction:
+    m_Name: Touch Press
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 30c39e0e-8f66-445e-a1e9-3e6f147279d3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  touchHoldAction:
+    m_Name: Touch Hold
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ccb7123e-7258-47a8-8534-fdec87b3908a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 420129910}
+  - {fileID: 1603392063}

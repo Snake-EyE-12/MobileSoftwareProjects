@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public enum GameState
 {
+    STARTUP,
     MAIN,
-    SETTINGS,
     BETTING,
     RACE_START,
     RACING,
@@ -19,21 +19,12 @@ public class RoundController : MonoBehaviour
 {
     public static RoundController instance;
 
-    [Header("Scenes")]
-    [SerializeField, Space(5)] SceneAsset Main;       // Main Menu Scene
-    [SerializeField, Space(5)] SceneAsset Betting;   // Betting Scene
-    [SerializeField, Space(5)] SceneAsset Racing;   // Racing Scene
-
     [Space(10)]
     [Header("Current State"), Space(5)]
     public GameState State;
 
     GameState prevState;
 
-	private void Awake()
-    {
-        instance = this;
-    }
 
     public void BetData(Bet bet)
     {
@@ -48,12 +39,14 @@ public class RoundController : MonoBehaviour
         }
     }
 
+    private void Awake() { instance = this; }
+
     void Start()
     {
         // Load Main Menu when app starts
-        SceneManager.LoadScene(Main.name, LoadSceneMode.Additive);
+        if (State == GameState.STARTUP) State = GameState.MAIN;
 
-        // Load important/persistent data here
+        // Load any important/persistent data here
     }
 
     void Update()
@@ -64,62 +57,56 @@ public class RoundController : MonoBehaviour
             // Unloads old scenes
             switch (prevState)
             {
-                case GameState.MAIN: try { SceneManager.UnloadSceneAsync(Main.name); } catch { } break;
-                case GameState.SETTINGS: break;
-                    case GameState.BETTING: SceneManager.UnloadSceneAsync(Betting.name); break;
-                    case GameState.RACING: break;
-                    case GameState.RACE_START: break;
-                    case GameState.RACE_END: SceneManager.UnloadSceneAsync(Racing.name); break;
-                    case GameState.RESULTS: break;
-                    case GameState.WIN: break;
-                    case GameState.LOSE: break;
-                    default: break;
-                    }
+                case GameState.MAIN: try { SceneManager.UnloadSceneAsync("MainMenu"); } catch { } break;
+                case GameState.BETTING: try { SceneManager.UnloadSceneAsync("Betting"); } catch { } break;
+                case GameState.RACING: try { SceneManager.UnloadSceneAsync("Race"); } catch { } break; 
+                case GameState.WIN: try { SceneManager.UnloadSceneAsync("Win"); } catch { } break;
+                case GameState.LOSE: try { SceneManager.UnloadSceneAsync("Lose"); } catch { } break;
+                default: break;  // Loading screen?
+            }
 
-                    // Loads new scenes
-                    switch (State)
-                    {
-                        case GameState.MAIN: SceneManager.LoadScene(Main.name, LoadSceneMode.Additive); break;
-                        case GameState.SETTINGS: break;
-                        case GameState.BETTING: SceneManager.LoadScene(Betting.name, LoadSceneMode.Additive); break;
-                        case GameState.RACE_START: SceneManager.LoadScene(Racing.name, LoadSceneMode.Additive); break;
-                        case GameState.RESULTS: break;
-                        case GameState.WIN: break;
-                        case GameState.LOSE: break;
-                        default: break;
-                    }
-                    }
+            // Loads new scenes
+            switch (State)
+            {
+                case GameState.MAIN: SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive); break;
+                case GameState.BETTING: SceneManager.LoadScene("Betting", LoadSceneMode.Additive); break;
+                case GameState.RACING: SceneManager.LoadScene("Race", LoadSceneMode.Additive); break;
+                case GameState.WIN: SceneManager.LoadScene("Win", LoadSceneMode.Additive); break;
+                case GameState.LOSE: SceneManager.LoadScene("Lose", LoadSceneMode.Additive); break;
+                default: break;  // Loading screen?
+            }
 
-        prevState = State;
+            prevState = State;
+        }
 
+
+        // Main Game State Machine
         switch (State)
         {
-            case GameState.MAIN:
+            case GameState.RACE_START:
+                // Use bet data
+
+
+                // Start Race
+                State = GameState.RACING;
                 break;
 
-            case GameState.SETTINGS:
-                break;
-
-            case GameState.BETTING:
-                break;
 
             case GameState.RACING:
                 break;
 
-            case GameState.RACE_START:
-                break;
 
             case GameState.RACE_END:
                 break;
 
-            case GameState.RESULTS:
-                break;
 
             case GameState.WIN:
                 break;
 
+
             case GameState.LOSE:
                 break;
+
 
             default:
                 break;
