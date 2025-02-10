@@ -365,7 +365,7 @@ MonoBehaviour:
   maxSuspicion: 200
   totalMoneyTxt: {fileID: 1585226187}
   betMoneyTxt: {fileID: 955087242}
-  roundTxt: {fileID: 0}
+  roundTxt: {fileID: 1214443949}
   feedbackTxt: {fileID: 882474565}
   susSlider: {fileID: 2078703896}
   betType: 0
