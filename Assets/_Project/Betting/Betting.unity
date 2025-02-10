@@ -202,7 +202,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 319459673}
         m_TargetAssemblyTypeName: BettingManager, Assembly-CSharp
         m_MethodName: changeBet
         m_Mode: 6
@@ -365,12 +365,12 @@ MonoBehaviour:
   maxSuspicion: 200
   totalMoneyTxt: {fileID: 1585226187}
   betMoneyTxt: {fileID: 955087242}
-  roundTxt: {fileID: 0}
+  roundTxt: {fileID: 1214443949}
   feedbackTxt: {fileID: 882474565}
   susSlider: {fileID: 2078703896}
   betType: 0
-  curRound: 0
-  maxRound: 0
+  curRound: 1
+  maxRound: 5
 --- !u!4 &319459674
 Transform:
   m_ObjectHideFlags: 0
@@ -2127,7 +2127,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 319459673}
         m_TargetAssemblyTypeName: BettingManager, Assembly-CSharp
         m_MethodName: changeBet
         m_Mode: 6
@@ -2595,7 +2595,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 319459673}
         m_TargetAssemblyTypeName: BettingManager, Assembly-CSharp
         m_MethodName: confirmBet
         m_Mode: 1
