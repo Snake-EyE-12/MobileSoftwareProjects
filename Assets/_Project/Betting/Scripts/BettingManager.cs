@@ -64,12 +64,13 @@ public class BettingManager : MonoBehaviour {
                 betType = BetType.AllOrNothing;
             } else {
                 betType = BetType.Normal;
-            } 
+            }
+
+            RoundController.instance.BetData(new Bet(betAmount, suspicion, betType));
+            RoundController.instance.State = GameState.RACE_START;
         } else {
             feedback = "Need to bet something...";
         }
-
-        RoundController.instance.BetData(new Bet(betAmount, suspicion, betType));
 
         updateUI();
     }
