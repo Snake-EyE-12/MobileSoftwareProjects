@@ -7,7 +7,8 @@ public class RacerUI : MonoBehaviour {
     [SerializeField] TextMeshProUGUI betTxt;
     [SerializeField] Image betImg;
     [SerializeField] Image[] warningImages;
-    [SerializeField] Image[] possibleWarningImages;
+    [SerializeField] Sprite[] possibleWarningImages;
+    [SerializeField] Sprite[] possibleBetImages;
     [SerializeField] Slider susBar;
     [SerializeField] float suspicion;
     [SerializeField] float maxSuspicion;
@@ -18,7 +19,7 @@ public class RacerUI : MonoBehaviour {
     float time = 0;
 
     void Start() {
-        
+        updateUI();
     }
 
     void Update() {
@@ -34,19 +35,26 @@ public class RacerUI : MonoBehaviour {
 
     public void updateUI() {
         timerTxt.text = "Time: " + time;
-        betTxt.text = "Bet: " + betAmount;
+        betTxt.text = "Bet: $" + betAmount;
         susBar.value = suspicion / maxSuspicion;
 
         for (int i = 0; i <= warningImages.Length; i++) {
-            if (warnings <= 0) continue;
+            if (i == 0) continue;
 
             if (i <= warnings) {
-                warningImages[i - 1] = possibleWarningImages[1];
+                warningImages[i - 1].sprite = possibleWarningImages[1];
             } else {
-				warningImages[i - 1] = possibleWarningImages[0];
+				warningImages[i - 1].sprite = possibleWarningImages[0];
 			}
         }
 
-        //set betImg based on betType
+        switch (betType) {
+            case BetType.Normal:
+                betImg.sprite = possibleBetImages[0];
+                break;
+            case BetType.AllOrNothing:
+                betImg.sprite = possibleBetImages[1];
+                break;
+        }
     }
 }
