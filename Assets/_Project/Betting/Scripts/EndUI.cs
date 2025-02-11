@@ -8,6 +8,11 @@ public class EndUI : MonoBehaviour {
     [SerializeField] TextMeshProUGUI moneyTxt;
     public int money;
 
+    public void Start()
+    {
+        resultsScreen(RoundController.instance.raceResults);
+    }
+
     public void resultsScreen(bool win) {
         if (win) {
             winP.SetActive(true);

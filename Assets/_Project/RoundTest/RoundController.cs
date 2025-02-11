@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,9 +11,7 @@ public enum GameState
     RACE_START,
     RACING,
     RACE_END,
-    RESULTS,  // Might not use this one
-    WIN,
-    LOSE
+    RESULTS
 }
 
 public class RoundController : MonoBehaviour
@@ -25,18 +24,17 @@ public class RoundController : MonoBehaviour
 
     GameState prevState;
 
+    public Bet betData;
+    public bool raceResults;
 
     public void BetData(Bet bet)
     {
-
+        betData = bet;
     }
 
     public void SetRaceResult(RaceResults results)
     {
-        if (results == global::RaceResults.Win)
-        {
-
-        }
+        raceResults = (results == RaceResults.Win);
     }
 
     public void ExitGame()
@@ -76,8 +74,7 @@ public class RoundController : MonoBehaviour
                 case GameState.MAIN: try { SceneManager.UnloadSceneAsync("MainMenu"); } catch { } break;
                 case GameState.BETTING: try { SceneManager.UnloadSceneAsync("Betting"); } catch { } break;
                 case GameState.RACING: try { SceneManager.UnloadSceneAsync("Race"); } catch { } break; 
-                case GameState.WIN: try { SceneManager.UnloadSceneAsync("Win"); } catch { } break;
-                case GameState.LOSE: try { SceneManager.UnloadSceneAsync("Lose"); } catch { } break;
+                case GameState.RESULTS: try { SceneManager.UnloadSceneAsync("End"); } catch { } break;
                 default: break;  // Loading screen?
             }
 
@@ -86,9 +83,8 @@ public class RoundController : MonoBehaviour
             {
                 case GameState.MAIN: SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive); break;
                 case GameState.BETTING: SceneManager.LoadScene("Betting", LoadSceneMode.Additive); break;
-                case GameState.RACING: SceneManager.LoadScene("Race", LoadSceneMode.Additive); break;
-                case GameState.WIN: SceneManager.LoadScene("Win", LoadSceneMode.Additive); break;
-                case GameState.LOSE: SceneManager.LoadScene("Lose", LoadSceneMode.Additive); break;
+                case GameState.RACE_START: SceneManager.LoadScene("Race", LoadSceneMode.Additive); break;
+                case GameState.RESULTS: SceneManager.LoadScene("End", LoadSceneMode.Additive); break;
                 default: break;  // Loading screen?
             }
 
@@ -100,11 +96,14 @@ public class RoundController : MonoBehaviour
         switch (State)
         {
             case GameState.RACE_START:
-                // Use bet data
+                if (SceneManager.GetSceneByName("Race").isLoaded)
+                {
+                    // Use bet data
 
 
-                // Start Race
-                State = GameState.RACING;
+                    // Start Race
+                    State = GameState.RACING;
+                }
                 break;
 
 
@@ -116,11 +115,11 @@ public class RoundController : MonoBehaviour
                 break;
 
 
-            case GameState.WIN:
-                break;
+            case GameState.RESULTS:
+                if (SceneManager.GetSceneByName("End").isLoaded)
+                {
 
-
-            case GameState.LOSE:
+                }
                 break;
 
 
