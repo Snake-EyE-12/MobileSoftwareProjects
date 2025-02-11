@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      firedice_0: -7289404509109493626
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
