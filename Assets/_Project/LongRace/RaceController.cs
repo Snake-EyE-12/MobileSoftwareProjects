@@ -10,8 +10,12 @@ public class RaceController : MonoBehaviour
 
     public static event RaceTimingEvent OnRaceStart;
     public static event RaceTimingEvent OnRacePause;
-    
-    
+
+    private void Awake()
+    {
+        Build();
+    }
+
     [Button]
     public void Build()
     {
