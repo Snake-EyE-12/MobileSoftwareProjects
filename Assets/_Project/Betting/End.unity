@@ -2031,9 +2031,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e8e8817f860d94eb10d562df516efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winP: {fileID: 0}
-  loseP: {fileID: 0}
-  moneyTxt: {fileID: 0}
+  winP: {fileID: 589845049}
+  loseP: {fileID: 1269523617}
+  moneyTxt: {fileID: 1446669946}
   money: 0
 --- !u!1 &2016360090
 GameObject:
