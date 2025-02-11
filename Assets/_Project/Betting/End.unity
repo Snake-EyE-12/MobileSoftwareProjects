@@ -718,7 +718,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 480678551}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1673149496}
+        m_TargetAssemblyTypeName: EndUI, Assembly-CSharp
+        m_MethodName: mainClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &480678551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -839,7 +851,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 547703231}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1673149496}
+        m_TargetAssemblyTypeName: EndUI, Assembly-CSharp
+        m_MethodName: againClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &547703231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1253,7 +1277,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 924050179}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1673149496}
+        m_TargetAssemblyTypeName: EndUI, Assembly-CSharp
+        m_MethodName: againClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &924050179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2192,7 +2228,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2123849824}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1673149496}
+        m_TargetAssemblyTypeName: EndUI, Assembly-CSharp
+        m_MethodName: mainClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2123849824
 MonoBehaviour:
   m_ObjectHideFlags: 0

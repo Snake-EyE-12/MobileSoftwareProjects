@@ -23,10 +23,10 @@ public class EndUI : MonoBehaviour {
     }
 
     public void againClick() {
-        SceneManager.LoadScene("Betting");
+        RoundController.instance.State = GameState.BETTING;
     }
 
     public void mainClick() {
-        SceneManager.LoadScene("MainMenu");
+        RoundController.instance.State = GameState.MAIN;
     }
 }

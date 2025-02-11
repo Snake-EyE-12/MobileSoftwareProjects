@@ -35,6 +35,7 @@ public class RoundController : MonoBehaviour
     public void SetRaceResult(RaceResults results)
     {
         raceResults = (results == RaceResults.Win);
+        State = GameState.RESULTS;
     }
 
     public void ExitGame()
@@ -108,10 +109,6 @@ public class RoundController : MonoBehaviour
 
 
             case GameState.RACING:
-                break;
-
-
-            case GameState.RACE_END:
                 break;
 
 
