@@ -33,8 +33,65 @@ public class HorseController : MonoBehaviour
     {
         if (!CanMove) return;
         DistanceTraveled += speedControls.Value * Time.deltaTime;
-        transform.position = startPosition + (Vector3.right * DistanceTraveled);
+        transform.position =
+            new Vector3(startPosition.x + DistanceTraveled, transform.position.y, transform.position.z);
+        //transform.position = startPosition + (Vector3.right * DistanceTraveled);
         if (DistanceTraveled > raceLength) CrossFinish();
+    }
+
+    private int currentLaneIndex;
+    private int laneCount;
+    private float yOffset;
+    private bool laneShifting;
+    private int desiredLaneDirection;
+    private float startingY;
+    private float endingY;
+    public void SetLaneShiftData(int currentLaneIndex, int laneCount, float ySeparation)
+    {
+        this.currentLaneIndex = currentLaneIndex;
+        this.laneCount = laneCount;
+        this.yOffset = ySeparation;
+    }
+    public void ShiftLane()
+    {
+        if(laneShifting || !CanMove) return;
+        laneShifting = true;
+        laneShiftStartTime = Time.time;
+        startingY = transform.position.y;
+        PickNewAdjacentLane();
+        endingY = startingY - (yOffset * desiredLaneDirection);
+    }
+
+    private void PickNewAdjacentLane()
+    {
+        if (currentLaneIndex == 0)
+        {
+            desiredLaneDirection = 1;
+            return;
+        }
+
+        if (currentLaneIndex == laneCount - 1)
+        {
+            desiredLaneDirection = -1;
+            return;
+        }
+        desiredLaneDirection = (UnityEngine.Random.Range(0, 2) == 0) ? 1 : -1;
+    }
+
+    [SerializeField] private float laneShiftDuration;
+    private float laneShiftStartTime;
+    private void AttemptLaneShift()
+    {
+        if(!laneShifting || !CanMove) return;
+        float t = (Time.time - laneShiftStartTime) / laneShiftDuration;
+        float newY = Mathf.Lerp(startingY, endingY, t);
+        if (t >= 1)
+        {
+            newY = endingY;
+            laneShifting = false;
+            currentLaneIndex += desiredLaneDirection;
+        }
+        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     }
 
     public delegate void RaceEvent(HorseController horse);
@@ -48,6 +105,7 @@ public class HorseController : MonoBehaviour
     private void Update()
     {
         Move();
+        AttemptLaneShift();
     }
     
 

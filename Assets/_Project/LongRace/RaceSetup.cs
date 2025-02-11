@@ -34,6 +34,7 @@ public class RaceSetup : MonoBehaviour
 
             HorseController newHorse = Instantiate(horsePrefab, startLocation, Quaternion.identity, SerializeTransform);
             newHorse.transform.SetParent(null);
+            newHorse.SetLaneShiftData(i, laneCount, separation);
             newHorse.raceLength = length;
             newHorse.IsPlayer = i == 0;
         }

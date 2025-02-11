@@ -197,7 +197,7 @@ MonoBehaviour:
   finishedState:
     targetAngle: 40
   dazedStars: {fileID: 3471721919191973638}
-  rotationSpeed: 30
+  rotationSpeed: 62.2
 --- !u!1 &5764575375047750064
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,3 +278,4 @@ MonoBehaviour:
   visual: {fileID: 1570393925721203049}
   speedControls:
     baseSpeed: 1
+  laneShiftDuration: 1.25

@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 
 
-[CreateAssetMenu(menuName = "CheatEffect", fileName = "SpeedEffect", order = 0)]
+[CreateAssetMenu(menuName = "CheatEffect/SpeedEffect", fileName = "SpeedEffect", order = 0)]
 [Serializable]
 public class SpeedEffect : CheatEffect
 {
@@ -16,18 +17,32 @@ public class SpeedEffect : CheatEffect
         GetRandomHorse().AddSpeedModifier(Random.Range(multiplier.x, multiplier.y), Random.Range(duration.x, duration.y));
     }
 
-    private HorseController GetRandomHorse()
-    {
-        return HorseController.horses[Random.Range(0, HorseController.horses.Count)];
-    }
 }
-
-
-
 
 
 [Serializable]
 public abstract class CheatEffect : ScriptableObject
 {
     public abstract void Apply();
+    
+    protected HorseController GetRandomHorse()
+    {
+        return HorseController.horses[Random.Range(0, HorseController.horses.Count)];
+    }
+    protected List<HorseController> GetRandomHorses(int count)
+    {
+        List<HorseController> decidedHorses = new();
+        int[] numbers = new int[HorseController.horses.Count];
+        for (int i = 0; i < HorseController.horses.Count; i++)
+        {
+            numbers[i] = i;
+        }
+        Array.Sort(numbers, (x, y) => Random.Range(-1, 2));
+        for (int i = 0; i < count; i++)
+        {
+            decidedHorses.Add(HorseController.horses[numbers[i]]);
+        }
+        return decidedHorses;
+
+    }
 }
