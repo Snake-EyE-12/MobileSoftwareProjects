@@ -10,6 +10,11 @@ public class PercentageDisplay : MonoBehaviour
         RaceController.OnRaceStart += InitializeIcons;
     }
 
+    private void OnDisable()
+    {
+        RaceController.OnRaceStart -= InitializeIcons;
+    }
+
     [SerializeField] private HorseIcon iconPrefab;
     public void InitializeIcons()
     {

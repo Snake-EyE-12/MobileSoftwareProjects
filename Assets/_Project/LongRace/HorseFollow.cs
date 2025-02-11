@@ -12,6 +12,11 @@ public class HorseFollow : MonoBehaviour
         startingPos = transform.position;
     }
 
+    private void OnDisable()
+    {
+        RaceController.OnRaceStart -= SetStartingHorse;
+    }
+
     private void Update()
     {
         if (target == null) return;
