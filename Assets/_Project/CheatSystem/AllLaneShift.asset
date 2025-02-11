@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87c454dd8ec475bbbee736f0d113350, type: 3}
   m_Name: AllLaneShift
   m_EditorClassIdentifier: 
-  horseEffectCount: {x: 1, y: 1}
+  horseEffectCount: {x: 4, y: 4}

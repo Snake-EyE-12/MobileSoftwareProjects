@@ -223,10 +223,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3008d462d7865c7418d5c69724d4330b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectTimeRange: {x: 1.6384282, y: 3.2768562}
+  effectTimeRange: {x: 0.15005326, y: 0.6722019}
   cheatEffects:
   - {fileID: 11400000, guid: c5281ba8f0832f2449364cdd71ad6cb9, type: 2}
   - {fileID: 11400000, guid: 553e2521487f3d74db0cfe68ee8c6a59, type: 2}
+  - {fileID: 11400000, guid: 94062ffb427d28742b875bfa32464aa8, type: 2}
+  - {fileID: 11400000, guid: 0a34e4e56c24fd0448c192d211129390, type: 2}
 --- !u!4 &486430813
 Transform:
   m_ObjectHideFlags: 0
