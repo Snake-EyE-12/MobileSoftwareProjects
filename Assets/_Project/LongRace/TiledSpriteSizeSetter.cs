@@ -7,4 +7,9 @@ public class TiledSpriteSizeSetter : MonoBehaviour
     {
         spriteRenderer.size = new Vector2(spriteRenderer.size.x, height);
     }
+
+    public void SetWidth(float width)
+    {
+        spriteRenderer.size = new Vector2(width, spriteRenderer.size.y);
+    }
 }

@@ -1,6 +1,7 @@
 using System;
 using NaughtyAttributes;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RaceSetup : MonoBehaviour
 {
@@ -14,10 +15,30 @@ public class RaceSetup : MonoBehaviour
     [SerializeField] private HorseController horsePrefab;
 
     [SerializeField] private Transform SerializeTransform;
-    
+
+    [SerializeField] private TiledSpriteSizeSetter picketFence;
+    [SerializeField] private OakTree treePrefab;
+    [SerializeField, MinMaxSlider(0, 30)] private Vector2 treeSpacing;
+    [SerializeField] private Vector2 startOffset;
+
+
+    private void BuildTrees()
+    {
+        float totalDistance = 0;
+        while (totalDistance < length + 10)
+        {
+            float newDistance = Random.Range(treeSpacing.x, treeSpacing.y);
+            totalDistance += newDistance;
+            Instantiate(treePrefab, new Vector3(totalDistance + startOffset.x, startOffset.y, 0), Quaternion.identity, SerializeTransform);
+        }
+    }
     
     public void BuildRace()
     {
+        BuildTrees();
+        picketFence.SetWidth(10 + length);
+        picketFence.transform.position =
+            new Vector3(length * 0.5f - 5, picketFence.transform.position.y, 0);
         float yOffset = laneCount * 0.5f - 0.5f;
         Vector3 offset = new Vector3(length * 0.5f, yOffset, 0f);
         for (int i = 0; i < laneCount; i++)
