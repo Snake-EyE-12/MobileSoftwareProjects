@@ -3393,6 +3393,7 @@ GameObject:
   - component: {fileID: 1204233809}
   - component: {fileID: 1204233810}
   - component: {fileID: 1204233811}
+  - component: {fileID: 1204233812}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -3463,6 +3464,63 @@ MonoBehaviour:
   controller: {fileID: 1204233810}
   startNumber: 3
   numberDisplay: {fileID: 86370837}
+--- !u!114 &1204233812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204233807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab410e947eb4f2bb2b963cbdba339e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neighs:
+  - type: 1
+    clip: {fileID: 8300000, guid: 7955cb917be55b748a35fe6a1dda076d, type: 3}
+    volume: {x: 1, y: 1}
+    pitch: {x: 1, y: 1}
+  - type: 1
+    clip: {fileID: 8300000, guid: 54a37ee42f92dc44980ad4381919cae9, type: 3}
+    volume: {x: 1, y: 1}
+    pitch: {x: 1, y: 1}
+  snorts:
+  - type: 1
+    clip: {fileID: 8300000, guid: 22e1da533e5fe844d91d89ef88d7f74b, type: 3}
+    volume: {x: 1, y: 1}
+    pitch: {x: 1, y: 1}
+  - type: 1
+    clip: {fileID: 8300000, guid: 1446fc3039e1ff647847e33063ee2132, type: 3}
+    volume: {x: 1, y: 1}
+    pitch: {x: 1, y: 1}
+  trots:
+  - type: 1
+    clip: {fileID: 8300000, guid: 18785afc7f32fed42bd037218357c9a2, type: 3}
+    volume: {x: 1, y: 1}
+    pitch: {x: 1, y: 1}
+  - type: 1
+    clip: {fileID: 8300000, guid: 935686ebd00cf7a4785d4f008e817855, type: 3}
+    volume: {x: 1, y: 1}
+    pitch: {x: 1, y: 1}
+  - type: 1
+    clip: {fileID: 8300000, guid: 4102e80e398214842bbcfc8af1117d64, type: 3}
+    volume: {x: 1, y: 1}
+    pitch: {x: 1, y: 1}
+  - type: 1
+    clip: {fileID: 8300000, guid: b1eb7a71723dd804099bc83118db99ea, type: 3}
+    volume: {x: 1, y: 1}
+    pitch: {x: 1, y: 1}
+  - type: 1
+    clip: {fileID: 8300000, guid: 53a30850caee4d44786ee86b5af9fe41, type: 3}
+    volume: {x: 1, y: 1}
+    pitch: {x: 1, y: 1}
+  - type: 1
+    clip: {fileID: 8300000, guid: b186bedf92e1b22419c90b479d2f219e, type: 3}
+    volume: {x: 1, y: 1}
+    pitch: {x: 1, y: 1}
+  randomSnortNeighDelay: {x: 4.076984, y: 5.396701}
+  randomTrotDelay: {x: 5.3731337, y: 9.803612}
 --- !u!1 &1227915998
 GameObject:
   m_ObjectHideFlags: 0

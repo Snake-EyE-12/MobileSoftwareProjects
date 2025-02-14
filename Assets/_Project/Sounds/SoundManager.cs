@@ -36,10 +36,10 @@ public class SoundManager : MonoBehaviour
 [Serializable]
 public class Sound
 {
-    [SerializeField] public SoundType type;
+    [SerializeField] public SoundType type = SoundType.SFX;
     [SerializeField] public AudioClip clip;
-    [SerializeField, MinMaxSlider(0, 4)] public Vector2 volume;
-    [SerializeField, MinMaxSlider(0, 4)] public Vector2 pitch;
+    [SerializeField, MinMaxSlider(0, 4)] public Vector2 volume = Vector2.one;
+    [SerializeField, MinMaxSlider(0, 4)] public Vector2 pitch = Vector2.one;
     
 }
 
