@@ -8,6 +8,7 @@ public class HorseController : MonoBehaviour
 {
     [SerializeField] private VisualHorseStateController visual;
     [SerializeField] private Speed speedControls;
+    [SerializeField] private Bounds kickBounds;
     public float DistanceTraveled { get; private set; }
     public static List<HorseController> horses = new();
     public float raceLength { get; set; }
@@ -28,14 +29,36 @@ public class HorseController : MonoBehaviour
         horses.Remove(this);
     }
 
-    private bool CanMove => runningRace;
+    [Button]
+    public void Kick()
+    {
+        var collection = Physics2D.OverlapBoxAll(transform.position + kickBounds.center, kickBounds.size, 0f, LayerMask.GetMask("Horse"));
+        visual.Kick();
+        foreach (var horse in collection)
+        {
+            if (horse.transform.parent.TryGetComponent(out HorseController controller))
+            {
+                if(controller == this) continue;
+                controller.Stun();
+            }
+        }
+    }
+
+    private float timeOfStunEnd;
+    public void Stun(float duration = 1.8f)
+    {
+        timeOfStunEnd = Time.time + duration;
+        visual.Dazed();
+    }
+
+    private bool CanMove => runningRace && Time.time > timeOfStunEnd;
     private void Move()
     {
         if (!CanMove) return;
         DistanceTraveled += speedControls.Value * Time.deltaTime;
         transform.position =
             new Vector3(startPosition.x + DistanceTraveled, transform.position.y, transform.position.z);
-        //transform.position = startPosition + (Vector3.right * DistanceTraveled);
+        visual.Moving();
         if (DistanceTraveled > raceLength) CrossFinish();
     }
 
@@ -56,7 +79,7 @@ public class HorseController : MonoBehaviour
     {
         if(laneShifting || !CanMove) return;
         laneShifting = true;
-        laneShiftStartTime = Time.time;
+        laneShiftStartTimer = 0;
         startingY = transform.position.y;
         PickNewAdjacentLane();
         endingY = startingY - (yOffset * desiredLaneDirection);
@@ -79,11 +102,12 @@ public class HorseController : MonoBehaviour
     }
 
     [SerializeField] private float laneShiftDuration;
-    private float laneShiftStartTime;
+    private float laneShiftStartTimer;
     private void AttemptLaneShift()
     {
         if(!laneShifting || !CanMove) return;
-        float t = (Time.time - laneShiftStartTime) / laneShiftDuration;
+        laneShiftStartTimer += Time.deltaTime;
+        float t = laneShiftStartTimer / laneShiftDuration;
         float newY = Mathf.Lerp(startingY, endingY, t);
         if (t >= 1)
         {
@@ -106,6 +130,7 @@ public class HorseController : MonoBehaviour
     {
         Move();
         AttemptLaneShift();
+        visual.SetSpeed(speedControls.Value, speedControls.Default);
     }
     
 
@@ -127,6 +152,12 @@ public class HorseController : MonoBehaviour
     {
         runningRace = false;
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position + kickBounds.center, kickBounds.size);
+    }
 }
 
 [Serializable]
@@ -134,6 +165,7 @@ public class Speed
 {
     [SerializeField] private float baseSpeed;
     private List<SpeedModifier> speedModifiers = new();
+    public float Default => baseSpeed;
 
     public float Value => DetermineSpeed();
     private float cachedSpeed;
@@ -179,7 +211,6 @@ public class Speed
     {
         speedModifiers.Add(multiplier);
         timeOfCacheReset = 0;
-        Debug.Log("Amount: " + speedModifiers.Count);
     }
 }
 
