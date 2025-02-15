@@ -11,6 +11,7 @@ public class VisualHorseStateController : MonoBehaviour
     [SerializeField] private MovingState movingState;
     [SerializeField] private FinishedState finishedState;
     [SerializeField] private DazedState dazedState;
+    [SerializeField] private FlyingState flyingState;
 
     [SerializeField] private GameObject footprintPrefab;
     private void ChangeState(HorseState newState)
@@ -21,15 +22,32 @@ public class VisualHorseStateController : MonoBehaviour
         currentState?.OnEnter(this);
     }
 
+    [SerializeField] private Transform flyingScalarTransform;
+    public void SetScale(float scale) => flyingScalarTransform.localScale = new Vector3(scale, scale, 1);
+
     public void SpawnFootprint()
     {
         Instantiate(footprintPrefab, transform.position, Quaternion.identity, null);
+    }
+
+    public float GetFlightTimePercent()
+    {
+        return (timeOfFlightEnd - Time.time) / (timeOfFlightEnd - timeOfFlightStart);
     }
     
     public void ReadyUp() => ChangeState(readyState);
     public void Moving() => ChangeState(movingState);
     public void Finished() => ChangeState(finishedState);
     public void Dazed() => ChangeState(dazedState);
+    private float timeOfFlightEnd;
+    private float timeOfFlightStart;
+    public void Spring(float duration)
+    {
+        timeOfFlightEnd = Time.time + duration;
+        timeOfFlightStart = Time.time;
+        ChangeState(flyingState);
+        horseSpriteRenderer.sprite = flySprite;
+    }
 
     private void Awake()
     {
@@ -97,6 +115,7 @@ public class VisualHorseStateController : MonoBehaviour
     [SerializeField] private float kickDuration;
     [SerializeField] private SpriteRenderer horseSpriteRenderer;
     [SerializeField] private Sprite kickSprite;
+    [SerializeField] private Sprite flySprite;
     private Sprite originalSprite;
     public void Kick()
     {
@@ -170,6 +189,31 @@ public class MovingState : HorseState
         if (current > max - tolerance) targetAngle = min;
         else if(current - tolerance < min) targetAngle = max;
     }
+}
+
+[System.Serializable]
+public class FlyingState : HorseState
+{
+    [SerializeField] private float min = -17;
+    [SerializeField] private float max = 17;
+    [SerializeField] private AnimationCurve scaleCurve;
+    
+
+    public override void OnEnter(VisualHorseStateController controller)
+    {
+    }
+
+    public override void OnExit(VisualHorseStateController controller)
+    {
+        controller.ResetSprite();
+    }
+
+    public override void OnUpdate(VisualHorseStateController controller)
+    {
+        controller.RotateTowardAngle(controller.GetFlightTimePercent() > 0.5f ? min : max);
+        controller.SetScale(scaleCurve.Evaluate(controller.GetFlightTimePercent()));
+    }
+
 }
 [System.Serializable]
 public class FinishedState : HorseState

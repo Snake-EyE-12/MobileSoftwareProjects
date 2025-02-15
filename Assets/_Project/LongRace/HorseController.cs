@@ -44,21 +44,42 @@ public class HorseController : MonoBehaviour
         }
     }
 
+    private bool flying;
+    
+    [Button]
+    public void SpringForward(float duration = 3f)
+    {
+        flying = true;
+        visual.Spring(duration);
+        Invoke(nameof(Land), duration);
+    }
+
+    private void Land()
+    {
+        flying = false;
+    }
+
     private float timeOfStunEnd;
     public void Stun(float duration = 1.8f)
     {
+        if (flying) return;
         timeOfStunEnd = Time.time + duration;
         visual.Dazed();
     }
 
-    private bool CanMove => runningRace && Time.time > timeOfStunEnd;
+    private bool CanMove => runningRace && Time.time > timeOfStunEnd && !flying;
     private void Move()
     {
         if (!CanMove) return;
-        DistanceTraveled += speedControls.Value * Time.deltaTime;
+        visual.Moving();
+        ChangePositionBy(speedControls.Value * Time.deltaTime);
+    }
+
+    private void ChangePositionBy(float value)
+    {
+        DistanceTraveled += value;
         transform.position =
             new Vector3(startPosition.x + DistanceTraveled, transform.position.y, transform.position.z);
-        visual.Moving();
         if (DistanceTraveled > raceLength) CrossFinish();
     }
 
@@ -128,9 +149,20 @@ public class HorseController : MonoBehaviour
     }
     private void Update()
     {
+        if (flying)
+        {
+            Fly();
+            return;
+        }
         Move();
         AttemptLaneShift();
         visual.SetSpeed(speedControls.Value, speedControls.Default);
+    }
+
+    [SerializeField] private float flySpeed = 5f;
+    private void Fly()
+    {
+        ChangePositionBy(flySpeed * Time.deltaTime);
     }
     
 

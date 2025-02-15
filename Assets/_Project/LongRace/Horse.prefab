@@ -9690,7 +9690,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1970949999
-  m_SortingLayer: 7
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -9798,7 +9798,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 500904947
-  m_SortingLayer: 11
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.8773585, g: 0.7355745, b: 0.12829298, a: 0.21960784}
@@ -9968,7 +9968,44 @@ MonoBehaviour:
     footPrintInterval: {x: 0.24352531, y: 0.440665}
   finishedState:
     targetAngle: 40
+  flyingState:
+    min: 25
+    max: -25
+    scaleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 1.5873176
+        outSlope: 1.5873176
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 1
+      - serializedVersion: 3
+        time: 0.5
+        value: 1.4
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: -1.6305708
+        outSlope: -1.6305708
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.9939879
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
   footprintPrefab: {fileID: 47422081767077276, guid: 977f4b58d7dcbab42b93fc4fc7a22e5a, type: 3}
+  flyingScalarTransform: {fileID: 9048829451537918590}
   speedTolerance: 0.2
   fastParticle: {fileID: 2247620819079130491}
   slowParticle: {fileID: 6781951893015907142}
@@ -9977,6 +10014,7 @@ MonoBehaviour:
   kickDuration: 0.2
   horseSpriteRenderer: {fileID: 402545438152583178}
   kickSprite: {fileID: -5954539536206477270, guid: 38de87113d1b18f4a9db58a2877df2fc, type: 3}
+  flySprite: {fileID: 4992880123057091012, guid: dea70cafb9ad8074096579e27c6dcf73, type: 3}
 --- !u!1 &5764575375047750064
 GameObject:
   m_ObjectHideFlags: 0
@@ -14938,7 +14976,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1970949999
-  m_SortingLayer: 7
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -14982,6 +15020,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7229413114975763478}
   - component: {fileID: 3842681772481726878}
+  - component: {fileID: 2832934007385355112}
   m_Layer: 9
   m_Name: VisualCollider
   m_TagString: Untagged
@@ -15041,6 +15080,33 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.62, y: 0.94}
   m_Direction: 1
+--- !u!50 &2832934007385355112
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8749278235294354933}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &9132633776310181623
 GameObject:
   m_ObjectHideFlags: 0
@@ -15094,3 +15160,4 @@ MonoBehaviour:
     m_Center: {x: -1.02, y: 0.07, z: 0}
     m_Extent: {x: 0.77, y: 0.37, z: 0}
   laneShiftDuration: 1.25
+  flySpeed: 2.3
