@@ -327,6 +327,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5561638164906826524, guid: cf03f7139985f5848ab1adda298830b3, type: 3}
   m_PrefabInstance: {fileID: 399041297}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &399041299 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8227295577657247176, guid: cf03f7139985f5848ab1adda298830b3, type: 3}
+  m_PrefabInstance: {fileID: 399041297}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d240354881be30f49aa7bdce8b489c14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &420129908
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,6 +369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 0
   raceResults: 0
+  settingsDataBinding: {fileID: 399041299}
 --- !u!4 &420129910
 Transform:
   m_ObjectHideFlags: 0
