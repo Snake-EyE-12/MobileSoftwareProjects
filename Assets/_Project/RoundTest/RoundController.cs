@@ -38,6 +38,27 @@ public class RoundController : MonoBehaviour
         State = GameState.RESULTS;
     }
 
+    private void PlayerWon()
+    {
+        
+    }
+
+    private void PlayerLost()
+    {
+        
+    }
+
+    [SerializeField] private SettingsDataBinding settingsDataBinding;
+    private void PlayerEndedWithProfit()
+    {
+        settingsDataBinding.OnWin(3);
+    }
+
+    private void PlayerEndedWithoutProfit()
+    {
+        settingsDataBinding.OnLose();
+    }
+
     public void ExitGame()
     {
         switch (State)
