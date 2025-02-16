@@ -15,8 +15,9 @@ public class AdrenalineHit : GameplayButton
 
         foreach (HorseController horse in HorseController.horses)
         {
-            if (Vector2.Distance(horse.transform.position, Camera.main.ScreenToWorldPoint(item.transform.position)) <= detectionRadius)
+            if (Vector2.Distance(horse.transform.position, Camera.main.ScreenToWorldPoint(itemRectTransform.position)) <= detectionRadius)
             {
+                print(Vector2.Distance(horse.transform.position, Camera.main.ScreenToWorldPoint(itemRectTransform.position)));
                 if (affectedHorse != null && affectedHorse.IsPlayer) continue;  // Prioritize player
                 else if (affectedHorse == null || horse.IsPlayer) affectedHorse = horse;
             }
