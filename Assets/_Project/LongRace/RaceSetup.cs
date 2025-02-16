@@ -29,7 +29,8 @@ public class RaceSetup : MonoBehaviour
         {
             float newDistance = Random.Range(treeSpacing.x, treeSpacing.y);
             totalDistance += newDistance;
-            Instantiate(treePrefab, new Vector3(totalDistance + startOffset.x, startOffset.y, 0), Quaternion.identity, SerializeTransform);
+            OakTree newTree = Instantiate(treePrefab, new Vector3(totalDistance + startOffset.x, startOffset.y, 0), Quaternion.identity, SerializeTransform);
+            newTree.transform.SetParent(null);
         }
     }
     

@@ -10004,6 +10004,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+  SerializeTransform: {fileID: 1845682412781904111, guid: cb03320864d502a4daf83200d2ffb288, type: 3}
   footprintPrefab: {fileID: 47422081767077276, guid: 977f4b58d7dcbab42b93fc4fc7a22e5a, type: 3}
   flyingScalarTransform: {fileID: 9048829451537918590}
   speedTolerance: 0.2
