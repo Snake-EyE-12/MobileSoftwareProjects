@@ -9968,7 +9968,17 @@ MonoBehaviour:
     footPrintInterval: {x: 0.24352531, y: 0.440665}
   finishedState:
     targetAngle: 40
+  flyingState:
+    min: -17
+    max: 17
+    scaleCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
   footprintPrefab: {fileID: 47422081767077276, guid: 977f4b58d7dcbab42b93fc4fc7a22e5a, type: 3}
+  flyingScalarTransform: {fileID: 9048829451537918590}
   speedTolerance: 0.2
   fastParticle: {fileID: 2247620819079130491}
   slowParticle: {fileID: 6781951893015907142}
@@ -9977,6 +9987,7 @@ MonoBehaviour:
   kickDuration: 0.2
   horseSpriteRenderer: {fileID: 402545438152583178}
   kickSprite: {fileID: -5954539536206477270, guid: 38de87113d1b18f4a9db58a2877df2fc, type: 3}
+  flySprite: {fileID: 4992880123057091012, guid: dea70cafb9ad8074096579e27c6dcf73, type: 3}
 --- !u!1 &5764575375047750064
 GameObject:
   m_ObjectHideFlags: 0
@@ -15094,3 +15105,4 @@ MonoBehaviour:
     m_Center: {x: -1.02, y: 0.07, z: 0}
     m_Extent: {x: 0.77, y: 0.37, z: 0}
   laneShiftDuration: 1.25
+  flySpeed: 5
