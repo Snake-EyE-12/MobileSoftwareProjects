@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c1c3f7bfd10964ba6ae480fe3fe611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  State: 0
+  State: 1
   raceResults: 0
   settingsDataBinding: {fileID: 399041299}
 --- !u!4 &420129910
@@ -678,6 +678,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: aac465d8-7878-4469-aebb-a4fe1b8f9228
     m_ActionName: 'Touch/TouchPress[/Simulated Touchscreen/press]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2a4da4e3-0b9d-4b56-9eff-aac2607bf0ef
+    m_ActionName: 'Touch/TouchHold[/Device Simulator Touchscreen/press]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Touch

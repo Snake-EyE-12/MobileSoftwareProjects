@@ -9689,8 +9689,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1970949999
-  m_SortingLayer: 0
+  m_SortingLayerID: 546696273
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -9798,7 +9798,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 500904947
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.8773585, g: 0.7355745, b: 0.12829298, a: 0.21960784}
@@ -9969,16 +9969,16 @@ MonoBehaviour:
   finishedState:
     targetAngle: 40
   flyingState:
-    min: 25
-    max: -25
+    min: -17
+    max: 17
     scaleCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
         value: 1
-        inSlope: 1.5873176
-        outSlope: 1.5873176
+        inSlope: 1.9814428
+        outSlope: 1.9814428
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
@@ -9995,11 +9995,11 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 1
         value: 1
-        inSlope: -1.6305708
-        outSlope: -1.6305708
+        inSlope: -1.9814663
+        outSlope: -1.9814663
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.9939879
+        inWeight: 1
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -10057,7 +10057,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1015851278310796257}
-  - component: {fileID: 8199132295263501530}
   m_Layer: 9
   m_Name: Particles
   m_TagString: Untagged
@@ -10083,18 +10082,6 @@ Transform:
   - {fileID: 5489882776145308853}
   m_Father: {fileID: 3346864221830810374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8199132295263501530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6340615556570528680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06733301a3306464687ea4ca2bd5bf1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7140244634885280326
 GameObject:
   m_ObjectHideFlags: 0
@@ -14988,8 +14975,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1970949999
-  m_SortingLayer: 0
+  m_SortingLayerID: 546696273
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -15033,7 +15020,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7229413114975763478}
   - component: {fileID: 3842681772481726878}
-  - component: {fileID: 2832934007385355112}
+  - component: {fileID: 3531715806359695676}
   m_Layer: 9
   m_Name: VisualCollider
   m_TagString: Untagged
@@ -15093,7 +15080,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.62, y: 0.94}
   m_Direction: 1
---- !u!50 &2832934007385355112
+--- !u!50 &3531715806359695676
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -15173,4 +15160,4 @@ MonoBehaviour:
     m_Center: {x: -1.02, y: 0.07, z: 0}
     m_Extent: {x: 0.77, y: 0.37, z: 0}
   laneShiftDuration: 1.25
-  flySpeed: 2.3
+  flySpeed: 5

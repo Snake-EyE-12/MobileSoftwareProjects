@@ -1,2 +1,18 @@
 fileFormatVersion: 2
 guid: 6ca0a54855ef97f42b40529e9a989e60
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - lanePrefab: {instanceID: 0}
+  - flagPrefab: {instanceID: 0}
+  - gatePrefab: {instanceID: 0}
+  - horsePrefab: {instanceID: 0}
+  - SerializeTransform: {fileID: 5998428095340462204, guid: cb03320864d502a4daf83200d2ffb288, type: 3}
+  - picketFence: {instanceID: 0}
+  - treePrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
