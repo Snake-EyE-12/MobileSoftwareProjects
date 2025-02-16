@@ -1,25 +1,16 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class AdrenalineHit : GameplayButton
 {
-    private void Update()
+    protected override bool Condition()
     {
-        if (moving)
-        {
-            // Dragging
+        return false;
+    }
 
-            Vector3 position = Camera.main.ScreenToWorldPoint(TouchManager.instance.touchPositionAction.ReadValue<Vector2>());
-            position.z = 0f;
-            transform.position = position;
-        }
-        else if (dropped)
-        {
-            // Gameplay Button Function
-
-            dropped = false;
-
-            
-        }
+    protected override void Drop(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
     }
 }

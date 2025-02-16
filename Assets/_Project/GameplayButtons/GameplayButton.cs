@@ -1,39 +1,61 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class GameplayButton : MonoBehaviour
+// Credits
+
+public abstract class GameplayButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] protected bool moving = false;
-    [SerializeField] protected bool dropped = false;
-    
-    public float grabRadius = 10;
+    [SerializeField] private Canvas canvas;
+    [SerializeField] private RectTransform draggingPlane;
 
-    private void OnEnable()
+    private GameObject item;
+    private RectTransform itemRectTransform;
+    private Vector3 originalPosition;
+
+
+    private void Awake()
     {
-        TouchManager.instance.touchHoldAction.started += Move;
-        TouchManager.instance.touchHoldAction.canceled += Drop;
+        item = gameObject;
+        itemRectTransform = item.GetComponent<RectTransform>();
+        originalPosition = itemRectTransform.position;
     }
 
-    private void OnDisable()
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        TouchManager.instance.touchHoldAction.started -= Move;
-        TouchManager.instance.touchHoldAction.canceled -= Drop;
+        // item.transform.SetParent(canvas.transform, false);
+        // item.transform.SetAsLastSibling();
+
+        Move(eventData);
     }
 
-    private void Move(InputAction.CallbackContext context)
-    {
-        if (Vector2.Distance(transform.position, Camera.main.ScreenToWorldPoint(
-            TouchManager.instance.touchPositionAction.ReadValue<Vector2>()
-            )) < grabRadius & !moving)
-            moving = true;
+    public void OnDrag(PointerEventData eventData) { Move(eventData); }
+
+    public void OnEndDrag(PointerEventData eventData) {
+        if (Condition() == true) Drop(eventData);
+
+        itemRectTransform.position = originalPosition;
     }
 
-    private void Drop(InputAction.CallbackContext context)
+
+    private void Move(PointerEventData eventData)
     {
-        if (moving)
+        if (eventData.pointerEnter != null && eventData.pointerEnter.transform as RectTransform != null)
         {
-            moving = false;
-            dropped = true;
+            draggingPlane = eventData.pointerEnter.transform as RectTransform;
+        }
+
+        var rt = item.GetComponent<RectTransform>();
+
+        if (RectTransformUtility.ScreenPointToWorldPointInRectangle(draggingPlane, eventData.position, eventData.pressEventCamera, out Vector3 globalMousePosition))
+        {
+            rt.position = globalMousePosition;
+            rt.rotation = draggingPlane.rotation;
         }
     }
+
+    protected abstract bool Condition();
+
+    protected abstract void Drop(PointerEventData eventData);
 }
