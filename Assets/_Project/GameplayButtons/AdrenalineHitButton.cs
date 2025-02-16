@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class AdrenalineHit : GameplayButton
+public class AdrenalineHitButton : GameplayButton
 {
     [SerializeField] private float speedMultiplier;
     [SerializeField] private float duration;

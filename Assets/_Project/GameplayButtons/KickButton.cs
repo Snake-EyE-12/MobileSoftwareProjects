@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Kick : GameplayButton
+public class KickButton : GameplayButton
 {
     private HorseController playerHorse;
 
