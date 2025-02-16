@@ -1,2 +1,20 @@
 fileFormatVersion: 2
 guid: 3158b7842233f594695224642a19c8bc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - SerializeTransform: {instanceID: 0}
+  - footprintPrefab: {instanceID: 0}
+  - flyingScalarTransform: {instanceID: 0}
+  - fastParticle: {instanceID: 0}
+  - slowParticle: {instanceID: 0}
+  - stars: {instanceID: 0}
+  - horseSpriteRenderer: {instanceID: 0}
+  - kickSprite: {instanceID: 0}
+  - flySprite: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

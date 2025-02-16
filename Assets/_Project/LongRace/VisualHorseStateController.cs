@@ -27,7 +27,8 @@ public class VisualHorseStateController : MonoBehaviour
 
     public void SpawnFootprint()
     {
-        Instantiate(footprintPrefab, transform.position, Quaternion.identity, null);
+        GameObject newFootprint = Instantiate(footprintPrefab, transform.position, Quaternion.identity, InstantiateTransform.instance.SpawnObject.transform);
+        newFootprint.transform.SetParent(null);
     }
 
     public float GetFlightTimePercent()
