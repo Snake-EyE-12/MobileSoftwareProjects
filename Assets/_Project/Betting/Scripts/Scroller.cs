@@ -1,17 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Scroller : MonoBehaviour {
-    [SerializeField] 
+    [SerializeField] RawImage img;
+    [SerializeField] float _x;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+        img.uvRect = new Rect(img.uvRect.position + new Vector2(_x, 0) * Time.deltaTime, img.uvRect.size);   
     }
 }
