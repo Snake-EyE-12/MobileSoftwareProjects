@@ -6,13 +6,10 @@ public class RacerUI : MonoBehaviour {
     [SerializeField] TextMeshProUGUI timerTxt;
     [SerializeField] TextMeshProUGUI betTxt;
     [SerializeField] Image betImg;
-    [SerializeField] Image[] warningImages;
-    [SerializeField] Sprite[] possibleWarningImages;
     [SerializeField] Sprite[] possibleBetImages;
     [SerializeField] Slider susBar;
     [SerializeField] float suspicion;
     [SerializeField] float maxSuspicion;
-    [SerializeField] int warnings = 0;
     [SerializeField] BetType betType;
     [SerializeField] int betAmount;
     bool countTime = false;
@@ -37,16 +34,6 @@ public class RacerUI : MonoBehaviour {
         timerTxt.text = "Time: " + time;
         betTxt.text = "Bet: $" + betAmount;
         susBar.value = suspicion / maxSuspicion;
-
-        for (int i = 0; i <= warningImages.Length; i++) {
-            if (i == 0) continue;
-
-            if (i <= warnings) {
-                warningImages[i - 1].sprite = possibleWarningImages[1];
-            } else {
-				warningImages[i - 1].sprite = possibleWarningImages[0];
-			}
-        }
 
         switch (betType) {
             case BetType.Normal:
