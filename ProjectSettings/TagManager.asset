@@ -59,6 +59,9 @@ TagManager:
   - name: Horses
     uniqueID: 3125040245
     locked: 0
+  - name: ParticlesFront
+    uniqueID: 546696273
+    locked: 0
   - name: World Items
     uniqueID: 1029996959
     locked: 0
