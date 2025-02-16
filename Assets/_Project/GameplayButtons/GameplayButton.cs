@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public abstract class GameplayButton : MonoBehaviour, IDragHandler, IEndDragHandler
 {
+    [SerializeField] protected bool canDrag;
+
     [SerializeField] protected Canvas canvas;
     [SerializeField] protected RectTransform draggingPlane;
 
@@ -21,12 +23,15 @@ public abstract class GameplayButton : MonoBehaviour, IDragHandler, IEndDragHand
         originalPosition = itemRectTransform.position;
     }
 
-    public void OnDrag(PointerEventData eventData) { Move(eventData); }
+    public void OnDrag(PointerEventData eventData) { if (canDrag) Move(eventData); }
 
     public void OnEndDrag(PointerEventData eventData) {
-        if (Condition(eventData) == true) Drop(eventData);
+        if (canDrag)
+        {
+            if (Condition(eventData) == true) Drop(eventData);
 
-        itemRectTransform.position = originalPosition;
+            itemRectTransform.position = originalPosition;
+        }
     }
 
 
@@ -47,4 +52,6 @@ public abstract class GameplayButton : MonoBehaviour, IDragHandler, IEndDragHand
     protected abstract bool Condition(PointerEventData eventData);
 
     protected abstract void Drop(PointerEventData eventData);
+
+    public abstract void Press();
 }
