@@ -7,7 +7,7 @@ public class Spinner : MonoBehaviour {
 
     void Update() {
         foreach (Image i in imgs) {
-            i.rectTransform.rotation = new Quaternion();
+            i.rectTransform.Rotate(0, 0, z);
         }
     }
 }

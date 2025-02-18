@@ -27,7 +27,7 @@ public class RacerUI : MonoBehaviour {
     }
 
     public void toggleClick(GameObject bar) {
-        
+        bar.SetActive(!bar.activeSelf);
     }
 
     public void updateUI() {
