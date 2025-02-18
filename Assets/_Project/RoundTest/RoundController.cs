@@ -26,11 +26,9 @@ public class RoundController : MonoBehaviour
 
     public Bet betData;
     public bool raceResults;
+    public int Round = 1;
 
-    public void BetData(Bet bet)
-    {
-        betData = bet;
-    }
+    public void BetData(Bet bet) { betData = bet; }
 
     public void SetRaceResult(RaceResults results)
     {
@@ -49,15 +47,9 @@ public class RoundController : MonoBehaviour
     }
 
     [SerializeField] private SettingsDataBinding settingsDataBinding;
-    private void PlayerEndedWithProfit()
-    {
-        settingsDataBinding.OnWin(3);
-    }
+    private void PlayerEndedWithProfit() { settingsDataBinding.OnWin(3); }
 
-    private void PlayerEndedWithoutProfit()
-    {
-        settingsDataBinding.OnLose();
-    }
+    private void PlayerEndedWithoutProfit() { settingsDataBinding.OnLose(); }
 
     public void ExitGame()
     {

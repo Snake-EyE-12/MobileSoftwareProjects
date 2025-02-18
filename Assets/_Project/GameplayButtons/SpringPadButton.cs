@@ -11,8 +11,17 @@ public class SpringPadButton : GameplayButton
     protected override bool Condition(PointerEventData eventData)
     {
         // Check if dropped on race track?
+        var lanes = FindObjectsByType<Lane>(FindObjectsSortMode.None);
 
-        return true;
+        foreach (Lane lane in lanes)
+        {
+            BoxCollider2D collider = lane.GetComponent<BoxCollider2D>();
+            Vector2 currentPosition = Camera.main.ScreenToWorldPoint(itemRectTransform.position);
+
+            if (IsPointWithinCollider(collider, currentPosition) == true) return true; 
+        }
+
+        return false;
     }
 
     protected override void Drop(PointerEventData eventData)
@@ -25,4 +34,6 @@ public class SpringPadButton : GameplayButton
     }
 
     public override void Press() {}
+
+    private bool IsPointWithinCollider(BoxCollider2D collider, Vector2 point) { return (collider.ClosestPoint(point) - point).sqrMagnitude < Mathf.Epsilon * Mathf.Epsilon; }
 }
