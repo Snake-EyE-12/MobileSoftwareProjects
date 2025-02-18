@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c75812be9df30de408adfb89154d4315
+guid: d31b645a095d0704da9de7762daa3bb1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1715655709402407654
-    second: springpad_0
+      213: 9143868440440847147
+    second: gear_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: springpad_0
+      name: gear_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 0
-        width: 81
-        height: 91
+        x: 21
+        y: 43
+        width: 449
+        height: 444
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a1dd234e834c038e0800000000000000
-      internalID: -1715655709402407654
+      spriteID: b2bb16976eb85ee70800000000000000
+      internalID: 9143868440440847147
       vertices: []
       indices: 
       edges: []
@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gear_0: 9143868440440847147
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
