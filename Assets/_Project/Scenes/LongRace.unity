@@ -587,8 +587,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1914055334692713733, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914055334692713733, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130704792867417539, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_Name
+      value: HorseTranquilizer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4233136789689384418, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_text
+      value: Horse Tranqulizer
       objectReference: {fileID: 0}
     - target: {fileID: 4557975528326202573, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
       propertyPath: InstantiateTransform
@@ -604,7 +616,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4599706801138954136, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -76.065
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663966540721622448, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_Name
+      value: HorseTranquilizerText
       objectReference: {fileID: 0}
     - target: {fileID: 8502636405364844285, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
       propertyPath: m_AnchorMax.y
@@ -619,6 +635,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8502636405364844285, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8502636405364844285, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -626,11 +646,48 @@ PrefabInstance:
       propertyPath: InstantiateTransform
       value: 
       objectReference: {fileID: 1890341641}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3178294381363347227, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4130704792867417539, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 543310117}
   m_SourcePrefab: {fileID: 100100000, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+--- !u!223 &543310114 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 1283244837204829810, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+  m_PrefabInstance: {fileID: 543310113}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &543310115 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1446143252372817535, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+  m_PrefabInstance: {fileID: 543310113}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &543310116 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4130704792867417539, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+  m_PrefabInstance: {fileID: 543310113}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &543310117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543310116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 453b02d66f7965e4cb9efbee905d6556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDrag: 0
+  canvas: {fileID: 543310114}
+  draggingPlane: {fileID: 543310115}
+  speedMultiplier: 0.4
+  duration: 5
+  detectionRadius: 10
 --- !u!1 &872907422
 GameObject:
   m_ObjectHideFlags: 0
