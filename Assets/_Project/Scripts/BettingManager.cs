@@ -67,7 +67,7 @@ public class BettingManager : MonoBehaviour {
             }
 
             RoundController.instance.BetData(new Bet(betAmount, suspicion, betType));
-            RoundController.instance.State = GameState.RACE_START;
+            RoundController.instance.State = GameState.RACING;
         } else {
             feedback = "Need to bet something...";
         }
