@@ -477,11 +477,8 @@ MonoBehaviour:
   canDrag: 0
   canvas: {fileID: 1792159310}
   draggingPlane: {fileID: 1792159311}
-  moneyGain: 0
-  moneyLose: 0
-  totalMoney: 0
-  betAmount: 0
   detectionRadius: 1
+  moneyManager: {fileID: 1792159312}
 --- !u!114 &1789811050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,8 +636,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yourMoney: 0
   theirMoney: 0
+  betMoney: 0
   yourMoneyBtns: []
   theirMoneyBtns: []
+  yourArea: {fileID: 0}
+  theirArea: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

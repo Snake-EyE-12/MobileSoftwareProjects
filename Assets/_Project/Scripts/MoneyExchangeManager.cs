@@ -7,6 +7,8 @@ public class MoneyExchangeManager : MonoBehaviour {
     [SerializeField] int betMoney;
     [SerializeField] MoneyBtn[] yourMoneyBtns;
     [SerializeField] MoneyBtn[] theirMoneyBtns;
+    public GameObject yourArea;
+    public GameObject theirArea;
 
     void Start() {
         updateButtons(10);
