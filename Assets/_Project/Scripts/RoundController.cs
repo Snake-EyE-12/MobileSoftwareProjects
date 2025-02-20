@@ -87,7 +87,7 @@ public class RoundController : MonoBehaviour
             {
                 case GameState.MAIN: try { SceneManager.UnloadSceneAsync("MainMenu"); } catch { } break;
                 case GameState.BETTING: try { SceneManager.UnloadSceneAsync("Betting"); } catch { } break;
-                case GameState.RACING: try { SceneManager.UnloadSceneAsync("Race"); } catch { } break; 
+                case GameState.RACING: try { SceneManager.UnloadSceneAsync("LongRace"); } catch { } break; 
                 case GameState.RESULTS: try { SceneManager.UnloadSceneAsync("End"); } catch { } break;
                 default: break;  // Loading screen?
             }
@@ -97,7 +97,7 @@ public class RoundController : MonoBehaviour
             {
                 case GameState.MAIN: SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive); break;
                 case GameState.BETTING: SceneManager.LoadScene("Betting", LoadSceneMode.Additive); break;
-                case GameState.RACE_START: SceneManager.LoadScene("Race", LoadSceneMode.Additive); break;
+                case GameState.RACE_START: SceneManager.LoadScene("LongRace", LoadSceneMode.Additive); break;
                 case GameState.RESULTS: SceneManager.LoadScene("End", LoadSceneMode.Additive); break;
                 default: break;  // Loading screen?
             }
@@ -110,7 +110,7 @@ public class RoundController : MonoBehaviour
         switch (State)
         {
             case GameState.RACE_START:
-                if (SceneManager.GetSceneByName("Race").isLoaded)
+                if (SceneManager.GetSceneByName("LongRace").isLoaded)
                 {
                     // Use bet data
 
