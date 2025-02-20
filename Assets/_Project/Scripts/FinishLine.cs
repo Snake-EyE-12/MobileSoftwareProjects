@@ -12,17 +12,17 @@ public class FinishLine : MonoBehaviour
     {
         if (!horse.IsPlayer)
         {
-            RoundController.instance.SetRaceResult(RaceResults.Lose);
+            RoundController.instance.RaceResult(RaceResults.Lose);
             return;
         }
 
         if (horse.DistanceTraveled < margin.transform.position.x)
         {
-            RoundController.instance.SetRaceResult(RaceResults.Win);
+            RoundController.instance.RaceResult(RaceResults.Win);
             return;
         }
 
-        RoundController.instance.SetRaceResult(RaceResults.CaughtCheating);
+        RoundController.instance.RaceResult(RaceResults.CaughtCheating);
     }
 
     [SerializeField] private TiledSpriteSizeSetter checkers;
