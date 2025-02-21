@@ -28,42 +28,30 @@ public class RoundController : MonoBehaviour
 
 
     [SerializeField] private SettingsDataBinding settingsDataBinding;
-    private void PlayerEndedWithProfit() { settingsDataBinding.OnWin(3); }
+    private void PlayerEndedWithProfit(int profit) { settingsDataBinding.OnWin(profit); }
 
     private void PlayerEndedWithoutProfit() { settingsDataBinding.OnLose(); }
 
     public void BetData(Bet bet) { betData = bet; }
 
-    public void RaceResult(RaceResults result)
+    [SerializeField] private RaceResultDisplay raceResultDisplay;
+    public void DisplayRaceResult(RaceResults result)
     {
-        if (result == RaceResults.Win)
-        {
-            raceResults = true;
-            PlayerWon();
-
-        }
-        else if (result == RaceResults.Lose)
-        {
-            raceResults = false;
-            PlayerLost();
-        }
-        else
-        {
-            raceResults = false;
-        }
-
-        State = GameState.RESULTS;
+        raceResultDisplay.SetState(result);
     }
 
-    private void PlayerWon()
+    public void NextRound()
     {
-        
+        Round++;
+        if (Round > 10) // Max Rounds
+        {
+            //if(cashRemaining > statingCash) PlayerEndedWithProfit(cashRemaining - statingCash);
+            //else PlayerEndedWithoutProfit();
+            State = GameState.RESULTS;
+        }
+        else State = GameState.BETTING;
     }
 
-    private void PlayerLost()
-    {
-        
-    }
 
     private void UpdateScene()
     {

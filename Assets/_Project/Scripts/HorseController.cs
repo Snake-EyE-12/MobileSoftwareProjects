@@ -32,6 +32,7 @@ public class HorseController : MonoBehaviour
     [Button]
     public void Kick()
     {
+        if (flying) return;
         var collection = Physics2D.OverlapBoxAll(transform.position + kickBounds.center, kickBounds.size, 0f, LayerMask.GetMask("Horse"));
         visual.Kick();
         foreach (var horse in collection)

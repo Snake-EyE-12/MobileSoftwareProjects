@@ -18,6 +18,10 @@ public class SettingsController : MonoBehaviour
     public void ToggleMenuVisibility()
     {
         menu.SetActive(!menu.activeSelf);
+        if (menu.activeSelf)
+        {
+            ChangeToAppearanceTab();
+        }
     }
     
     public void ChangeSettingsTab(SettingsTab tabType)
