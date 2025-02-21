@@ -20,38 +20,72 @@ public class RoundController : MonoBehaviour
     [Header("Current State"), Space(5)]
     public GameState State;
 
+    [Space(10)]
+    [Header("Rounds"), Space(5)]
+    public int round = 1;
+    [Range(1, 20)] public int maxRounds = 10;
+
+    [Space(10)]
+    [Header("Suspicion"), Space(5)]
+    public float globalSuspicion = 0f;
+    public float maxSuspicion = 200f;
+
+    [Space(10)]
+    [Header("Betting"), Space(5)]
+    public int money = 200;
+    public int startingMoney = 200;
+    public int changeBetBy = 10;
+    public int betAmount = 0;
+    public BetType betType;
+
+    [Space(10)]
+    [Header("Results"), Space(5)]
+    [SerializeField] private RaceResultDisplay raceResultDisplay;
+    public bool raceResults;
+
+    [Space(10)]
+    [Header("Settings"), Space(5)]
+    [SerializeField] private SettingsDataBinding settingsDataBinding;
+
     GameState prevState;
 
-    public Bet betData;
-    public bool raceResults;
-    public int Round = 1;
 
-
-    [SerializeField] private SettingsDataBinding settingsDataBinding;
     private void PlayerEndedWithProfit(int profit) { settingsDataBinding.OnWin(profit); }
 
     private void PlayerEndedWithoutProfit() { settingsDataBinding.OnLose(); }
 
-    public void BetData(Bet bet) { betData = bet; }
+    public void BetData(Bet bet)
+    {
+        betAmount = bet.betAmount;
+        globalSuspicion += bet.suspicion;
+        betType = bet.betType;
+    }
 
-    [SerializeField] private RaceResultDisplay raceResultDisplay;
     public void DisplayRaceResult(RaceResults result)
     {
         raceResultDisplay.SetState(result);
+
+        // if (result == RaceResults.CaughtCheating) { }
     }
 
     public void NextRound()
     {
-        Round++;
-        if (Round > 10) // Max Rounds
+        round++;
+
+        if (round > maxRounds) // Max Rounds
         {
             //if(cashRemaining > statingCash) PlayerEndedWithProfit(cashRemaining - statingCash);
             //else PlayerEndedWithoutProfit();
+
+            round = 1;
             State = GameState.RESULTS;
         }
-        else State = GameState.BETTING;
+        else
+        {
+            betAmount = 0;
+            State = GameState.BETTING;
+        }
     }
-
 
     private void UpdateScene()
     {

@@ -7,7 +7,8 @@ public class BettingManager : MonoBehaviour {
     [SerializeField] int betAmount;
     [SerializeField] int changeBetAmount;
     [SerializeField] string feedback;
-    [SerializeField] float suspicion;
+    [SerializeField] float suspicion = 0;
+    [SerializeField] float globalSuspicion;
     [SerializeField] float maxSuspicion;
     [SerializeField] TextMeshProUGUI totalMoneyTxt;
     [SerializeField] TextMeshProUGUI betMoneyTxt;
@@ -19,14 +20,22 @@ public class BettingManager : MonoBehaviour {
     [SerializeField] int maxRound;
 
     void Start() {
-        updateUI();
+        setValues(
+            RoundController.instance.money,
+            RoundController.instance.betAmount,
+            RoundController.instance.changeBetBy,
+            RoundController.instance.globalSuspicion,
+            RoundController.instance.maxSuspicion,
+            RoundController.instance.round,
+            RoundController.instance.maxRounds
+            );
     }
 
-    public void setValues(int total, int bet, int changeBet, float sus, float maxSus, int round, int maxRounds) {
+    public void setValues(int total, int bet, int changeBet, float gsus, float maxSus, int round, int maxRounds) {
         totalMoney = total;
         betAmount = bet;
         changeBetAmount = changeBet;
-        suspicion = sus;
+        globalSuspicion = gsus;
         maxSuspicion = maxSus;
         curRound = round;
         maxRound = maxRounds;
@@ -41,7 +50,7 @@ public class BettingManager : MonoBehaviour {
                 totalMoney += changeBetAmount;
                 suspicion -= 10;
             } else {
-                feedback = "Your not even betting...";
+                feedback = "You're not even betting...";
             }
         } else {
             if (totalMoney > 0) {
@@ -79,7 +88,7 @@ public class BettingManager : MonoBehaviour {
 		totalMoneyTxt.text = "$" + totalMoney;
 		betMoneyTxt.text = "$" + betAmount;
 		feedbackTxt.text = feedback;
-		susSlider.value = suspicion / maxSuspicion;
+		susSlider.value = (suspicion + globalSuspicion) / maxSuspicion;
         roundTxt.text = $"Round: {curRound}/{maxRound}";
 	}
 }
