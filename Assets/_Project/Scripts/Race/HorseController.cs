@@ -78,6 +78,7 @@ public class HorseController : MonoBehaviour
 
     private void ChangePositionBy(float value)
     {
+        if (!runningRace) return;
         DistanceTraveled += value;
         transform.position =
             new Vector3(startPosition.x + DistanceTraveled, transform.position.y, transform.position.z);
