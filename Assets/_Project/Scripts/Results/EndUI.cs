@@ -10,7 +10,8 @@ public class EndUI : MonoBehaviour {
 
     public void Start()
     {
-        resultsScreen(RoundController.instance.raceResults);
+        resultsScreen(RoundController.instance.gameWon);
+        money = RoundController.instance.money;
     }
 
     public void resultsScreen(bool win) {
@@ -20,6 +21,8 @@ public class EndUI : MonoBehaviour {
         } else {
             loseP.SetActive(true);
         }
+
+        RoundController.instance.ResetGame();
     }
 
     public void againClick() {

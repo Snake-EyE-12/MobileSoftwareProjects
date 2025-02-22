@@ -27,21 +27,22 @@ public class RoundController : MonoBehaviour
 
     [Space(10)]
     [Header("Suspicion"), Space(5)]
-    public float globalSuspicion = 0f;
-    public float maxSuspicion = 200f;
+    public int globalSuspicion = 0;
+    public int maxSuspicion = 15;
+    public int raceSuspicion = 0;
 
     [Space(10)]
     [Header("Betting"), Space(5)]
     public int money = 200;
     public int startingMoney = 200;
-    public int changeBetBy = 10;
+    [Range(1, 100)] public float changeBetByPercentage = 10;
     public int betAmount = 0;
     public BetType betType;
 
     [Space(10)]
     [Header("Results"), Space(5)]
     [SerializeField] private RaceResultDisplay raceResultDisplay;
-    public bool raceResults;
+    public bool gameWon = true;
 
     [Space(10)]
     [Header("Settings"), Space(5)]
@@ -65,7 +66,28 @@ public class RoundController : MonoBehaviour
     {
         raceResultDisplay.SetState(result);
 
-        // if (result == RaceResults.CaughtCheating) { }
+        if (result == RaceResults.CaughtCheating)
+        {
+            globalSuspicion += 2;
+            if (globalSuspicion > maxSuspicion) globalSuspicion = maxSuspicion;
+        }
+        else if (result == RaceResults.Win)
+        {
+            globalSuspicion += 1;
+            money += betAmount;
+        }
+        else
+        {
+            globalSuspicion -= 3;
+            if (globalSuspicion < 0) globalSuspicion = 0;
+
+            money -= betAmount;
+            if (money <= 0)  // Game Over
+            {
+                round = 10;
+                gameWon = false;
+            }
+        }
     }
 
     public void NextRound()
@@ -74,8 +96,8 @@ public class RoundController : MonoBehaviour
 
         if (round > maxRounds) // Max Rounds
         {
-            //if(cashRemaining > statingCash) PlayerEndedWithProfit(cashRemaining - statingCash);
-            //else PlayerEndedWithoutProfit();
+            if (money > startingMoney) PlayerEndedWithProfit(money - startingMoney);
+            else { PlayerEndedWithoutProfit(); gameWon = false; }  // You Lose :(
 
             round = 1;
             State = GameState.RESULTS;
@@ -132,8 +154,18 @@ public class RoundController : MonoBehaviour
         }
     }
 
+    public void ResetGame()
+    {
+        globalSuspicion = 0;
+        raceSuspicion = 0;
+        money = startingMoney;
+        betAmount = 0;
 
-    private void Awake() { instance = this; }
+        gameWon = true;
+    }
+
+
+    private void Awake() { instance = this; money = startingMoney; }
 
     // Load Main Menu when app starts
     void Start() { if (State == GameState.STARTUP) State = GameState.MAIN; }
