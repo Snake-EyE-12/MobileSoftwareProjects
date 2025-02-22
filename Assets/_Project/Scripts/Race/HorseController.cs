@@ -48,7 +48,7 @@ public class HorseController : MonoBehaviour
     private bool flying;
     
     [Button]
-    public void SpringForward(float duration = 3f)
+    public void SpringForward(float duration = 1f)
     {
         flying = true;
         visual.Spring(duration);

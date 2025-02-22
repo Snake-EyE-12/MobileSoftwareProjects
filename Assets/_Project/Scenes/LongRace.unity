@@ -670,6 +670,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HorseTranquilizerText
       objectReference: {fileID: 0}
+    - target: {fileID: 8467585235797180362, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: duration
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8467585235797180362, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: speedMultiplier
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8502636405364844285, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -733,8 +741,8 @@ MonoBehaviour:
   canDrag: 0
   canvas: {fileID: 543310114}
   draggingPlane: {fileID: 543310115}
-  speedMultiplier: 0.4
-  duration: 5
+  speedMultiplier: 0.05
+  duration: 1.5
   detectionRadius: 10
 --- !u!1 &872907422
 GameObject:
