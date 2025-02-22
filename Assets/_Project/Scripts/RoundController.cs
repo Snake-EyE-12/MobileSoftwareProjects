@@ -89,6 +89,8 @@ public class RoundController : MonoBehaviour
             default: print("Something went wrong"); break;
         }
 
+        betAmount = 0;
+
         if (money <= 0)  // Game Over
         {
             round = 10;
@@ -112,7 +114,6 @@ public class RoundController : MonoBehaviour
         }
         else
         {
-            betAmount = 0;
             State = GameState.BETTING;
         }
     }
