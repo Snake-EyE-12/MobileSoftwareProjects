@@ -70,6 +70,8 @@ public class RoundController : MonoBehaviour
         {
             globalSuspicion += 2;
             if (globalSuspicion > maxSuspicion) globalSuspicion = maxSuspicion;
+
+            money -= betAmount;
         }
         else if (result == RaceResults.Win)
         {
@@ -82,11 +84,12 @@ public class RoundController : MonoBehaviour
             if (globalSuspicion < 0) globalSuspicion = 0;
 
             money -= betAmount;
-            if (money <= 0)  // Game Over
-            {
-                round = 10;
-                gameWon = false;
-            }
+        }
+
+        if (money <= 0)  // Game Over
+        {
+            round = 10;
+            gameWon = false;
         }
     }
 
