@@ -11,6 +11,7 @@ public class RaceResultDisplay : MonoBehaviour
     {
         if (!set)
         {
+            set = true;
             resultScreen.SetActive(true);
             Invoke(nameof(End), 3);
             switch (state)
@@ -25,15 +26,13 @@ public class RaceResultDisplay : MonoBehaviour
                     text.text = "Caught Cheating!";
                     break;
             }
-
-            set = true;
         }
     }
 
     private void End()
     {
+        set = false;
         resultScreen.SetActive(false);
         RoundController.instance.NextRound();
-        set = false;
     }
 }

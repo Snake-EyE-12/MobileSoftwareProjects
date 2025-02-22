@@ -64,26 +64,29 @@ public class RoundController : MonoBehaviour
 
     public void DisplayRaceResult(RaceResults result)
     {
-        raceResultDisplay.SetState(result);
-
-        if (result == RaceResults.CaughtCheating)
+        switch (result)
         {
-            globalSuspicion += 2;
-            if (globalSuspicion > maxSuspicion) globalSuspicion = maxSuspicion;
+            case RaceResults.CaughtCheating:
+                print("Caught Cheating");
+                globalSuspicion += 2;
+                if (globalSuspicion > maxSuspicion) globalSuspicion = maxSuspicion;
+                money -= betAmount;
+                break;
 
-            money -= betAmount;
-        }
-        else if (result == RaceResults.Win)
-        {
-            globalSuspicion += 1;
-            money += betAmount;
-        }
-        else
-        {
-            globalSuspicion -= 3;
-            if (globalSuspicion < 0) globalSuspicion = 0;
+            case RaceResults.Win:
+                print("Won");
+                globalSuspicion += 1;
+                money += betAmount;
+                break;
 
-            money -= betAmount;
+            case RaceResults.Lose:
+                print("Lost");
+                globalSuspicion -= 2;
+                if (globalSuspicion < 0) globalSuspicion = 0;
+                money -= betAmount;
+                break;
+
+            default: print("Something went wrong"); break;
         }
 
         if (money <= 0)  // Game Over
@@ -91,6 +94,8 @@ public class RoundController : MonoBehaviour
             round = 10;
             gameWon = false;
         }
+
+        raceResultDisplay.SetState(result);
     }
 
     public void NextRound()
@@ -168,7 +173,7 @@ public class RoundController : MonoBehaviour
     }
 
 
-    private void Awake() { instance = this; money = startingMoney; }
+    private void Awake() { instance = this; money = startingMoney; gameWon = true; }
 
     // Load Main Menu when app starts
     void Start() { if (State == GameState.STARTUP) State = GameState.MAIN; }
