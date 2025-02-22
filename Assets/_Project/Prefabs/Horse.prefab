@@ -10013,8 +10013,12 @@ MonoBehaviour:
   rotationSpeed: 62.2
   kickDuration: 0.2
   horseSpriteRenderer: {fileID: 402545438152583178}
+  originalSprite: {fileID: -7501201644240826356, guid: 8746a3f2c790ced4bb6aab9f8e1b35a0, type: 3}
   kickSprite: {fileID: -5954539536206477270, guid: 38de87113d1b18f4a9db58a2877df2fc, type: 3}
   flySprite: {fileID: 4992880123057091012, guid: dea70cafb9ad8074096579e27c6dcf73, type: 3}
+  playerCharacterSprite: {fileID: -2567929327156367883, guid: 2e1da0bab4845394097928b3e22e6be8, type: 3}
+  playerKickSprite: {fileID: 193019130523392593, guid: 14afe0ca1fe3c81499a26aebb5c0df23, type: 3}
+  playerFlySprite: {fileID: 410713836176608912, guid: e5543998123fecb43af408210cc0b455, type: 3}
 --- !u!1 &5764575375047750064
 GameObject:
   m_ObjectHideFlags: 0
