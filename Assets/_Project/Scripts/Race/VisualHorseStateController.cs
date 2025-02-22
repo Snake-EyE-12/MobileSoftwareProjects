@@ -47,13 +47,12 @@ public class VisualHorseStateController : MonoBehaviour
         timeOfFlightEnd = Time.time + duration;
         timeOfFlightStart = Time.time;
         ChangeState(flyingState);
-        horseSpriteRenderer.sprite = flySprite;
+        horseSpriteRenderer.sprite = GetFlySprite();
     }
 
     private void Awake()
     {
         ChangeState(readyState);
-        originalSprite = horseSpriteRenderer.sprite;
     }
     private void Update()
     {
@@ -115,16 +114,39 @@ public class VisualHorseStateController : MonoBehaviour
 
     [SerializeField] private float kickDuration;
     [SerializeField] private SpriteRenderer horseSpriteRenderer;
+    [SerializeField] private Sprite originalSprite;
     [SerializeField] private Sprite kickSprite;
     [SerializeField] private Sprite flySprite;
-    private Sprite originalSprite;
     public void Kick()
     {
-        horseSpriteRenderer.sprite = kickSprite;
+        horseSpriteRenderer.sprite = GetKickSprite();
         Invoke(nameof(ResetSprite), kickDuration);
     }
-    public void ResetSprite() => horseSpriteRenderer.sprite = originalSprite;
+    public void ResetSprite() => horseSpriteRenderer.sprite = GetSprite();
 
+
+    [SerializeField] private Sprite playerCharacterSprite;
+    [SerializeField] private Sprite playerKickSprite;
+    [SerializeField] private Sprite playerFlySprite;
+
+
+    private bool isPlayer;
+    public void SetPlayerHorse()
+    {
+        horseSpriteRenderer.sprite = playerCharacterSprite;
+        isPlayer = true;
+    }
+    private Sprite GetSprite() => isPlayer ? playerCharacterSprite : originalSprite;
+    private Sprite GetKickSprite()
+    {
+        if (isPlayer) return playerKickSprite;
+        else return kickSprite;
+    }
+    private Sprite GetFlySprite()
+    {
+        if (isPlayer) return playerFlySprite;
+        else return flySprite;
+    }
 
 }
 

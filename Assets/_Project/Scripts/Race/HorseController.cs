@@ -98,6 +98,12 @@ public class HorseController : MonoBehaviour
         this.laneCount = laneCount;
         this.yOffset = ySeparation;
     }
+
+    public void SetAsPlayer()
+    {
+        IsPlayer = true;
+        visual.SetPlayerHorse();
+    }
     public void ShiftLane()
     {
         if(laneShifting || !CanMove) return;

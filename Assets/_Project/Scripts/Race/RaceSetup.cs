@@ -58,7 +58,7 @@ public class RaceSetup : MonoBehaviour
             newHorse.transform.SetParent(null);
             newHorse.SetLaneShiftData(i, laneCount, separation);
             newHorse.raceLength = length;
-            newHorse.IsPlayer = i == 0;
+            if(i == 0) newHorse.SetAsPlayer();
         }
 
         Vector3 flagPos = new Vector3(length, 0f, 0f);
