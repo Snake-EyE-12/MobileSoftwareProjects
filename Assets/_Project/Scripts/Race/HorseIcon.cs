@@ -16,6 +16,7 @@ public class HorseIcon : MonoBehaviour
         if (horse.IsPlayer)
         {
             image.sprite = playerImage;
+            image.transform.localScale *= (1.3f);
         }
     }
 
