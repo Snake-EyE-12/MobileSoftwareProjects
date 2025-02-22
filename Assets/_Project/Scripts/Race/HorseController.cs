@@ -32,6 +32,7 @@ public class HorseController : MonoBehaviour
     [Button]
     public void Kick()
     {
+        if (flying) return;
         var collection = Physics2D.OverlapBoxAll(transform.position + kickBounds.center, kickBounds.size, 0f, LayerMask.GetMask("Horse"));
         visual.Kick();
         foreach (var horse in collection)
@@ -47,7 +48,7 @@ public class HorseController : MonoBehaviour
     private bool flying;
     
     [Button]
-    public void SpringForward(float duration = 3f)
+    public void SpringForward(float duration = 1f)
     {
         flying = true;
         visual.Spring(duration);
@@ -77,6 +78,7 @@ public class HorseController : MonoBehaviour
 
     private void ChangePositionBy(float value)
     {
+        if (!runningRace) return;
         DistanceTraveled += value;
         transform.position =
             new Vector3(startPosition.x + DistanceTraveled, transform.position.y, transform.position.z);

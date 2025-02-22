@@ -574,6 +574,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1549268907931936481, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549268907931936481, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549268907931936481, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -2332
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549268907931936481, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -620
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549268907931936481, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -160
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549268907931936481, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 79
+      objectReference: {fileID: 0}
     - target: {fileID: 1914055334692713733, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -593,6 +617,30 @@ PrefabInstance:
     - target: {fileID: 1914055334692713733, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960710568034259314, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960710568034259314, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960710568034259314, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -2332
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960710568034259314, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -620
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960710568034259314, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 157
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960710568034259314, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 83
       objectReference: {fileID: 0}
     - target: {fileID: 4130704792867417539, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
       propertyPath: m_Name
@@ -621,6 +669,14 @@ PrefabInstance:
     - target: {fileID: 5663966540721622448, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
       propertyPath: m_Name
       value: HorseTranquilizerText
+      objectReference: {fileID: 0}
+    - target: {fileID: 8467585235797180362, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: duration
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8467585235797180362, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
+      propertyPath: speedMultiplier
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8502636405364844285, guid: 66b3ad20f9eb4c04595f9afa4d745697, type: 3}
       propertyPath: m_AnchorMax.y
@@ -685,8 +741,8 @@ MonoBehaviour:
   canDrag: 0
   canvas: {fileID: 543310114}
   draggingPlane: {fileID: 543310115}
-  speedMultiplier: 0.4
-  duration: 5
+  speedMultiplier: 0.05
+  duration: 1.5
   detectionRadius: 10
 --- !u!1 &872907422
 GameObject:

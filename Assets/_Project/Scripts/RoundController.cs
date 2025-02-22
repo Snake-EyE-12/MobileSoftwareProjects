@@ -20,49 +20,101 @@ public class RoundController : MonoBehaviour
     [Header("Current State"), Space(5)]
     public GameState State;
 
+    [Space(10)]
+    [Header("Rounds"), Space(5)]
+    public int round = 1;
+    [Range(1, 20)] public int maxRounds = 10;
+
+    [Space(10)]
+    [Header("Suspicion"), Space(5)]
+    public int globalSuspicion = 0;
+    public int maxSuspicion = 15;
+    public int raceSuspicion = 0;
+
+    [Space(10)]
+    [Header("Betting"), Space(5)]
+    public int money = 200;
+    public int startingMoney = 200;
+    [Range(1, 100)] public float changeBetByPercentage = 10;
+    public int betAmount = 0;
+    public BetType betType;
+
+    [Space(10)]
+    [Header("Results"), Space(5)]
+    [SerializeField] private RaceResultDisplay raceResultDisplay;
+    public bool gameWon = true;
+
+    [Space(10)]
+    [Header("Settings"), Space(5)]
+    [SerializeField] private SettingsDataBinding settingsDataBinding;
+
     GameState prevState;
 
-    public Bet betData;
-    public bool raceResults;
-    public int Round = 1;
 
-
-    [SerializeField] private SettingsDataBinding settingsDataBinding;
-    private void PlayerEndedWithProfit() { settingsDataBinding.OnWin(3); }
+    private void PlayerEndedWithProfit(int profit) { settingsDataBinding.OnWin(profit); }
 
     private void PlayerEndedWithoutProfit() { settingsDataBinding.OnLose(); }
 
-    public void BetData(Bet bet) { betData = bet; }
-
-    public void RaceResult(RaceResults result)
+    public void BetData(Bet bet)
     {
-        if (result == RaceResults.Win)
-        {
-            raceResults = true;
-            PlayerWon();
+        betAmount = bet.betAmount;
+        globalSuspicion += bet.suspicion;
+        betType = bet.betType;
+    }
 
-        }
-        else if (result == RaceResults.Lose)
+    public void DisplayRaceResult(RaceResults result)
+    {
+        switch (result)
         {
-            raceResults = false;
-            PlayerLost();
+            case RaceResults.CaughtCheating:
+                print("Caught Cheating");
+                globalSuspicion += 2;
+                if (globalSuspicion > maxSuspicion) globalSuspicion = maxSuspicion;
+                money -= betAmount;
+                break;
+
+            case RaceResults.Win:
+                print("Won");
+                globalSuspicion += 1;
+                money += betAmount;
+                break;
+
+            case RaceResults.Lose:
+                print("Lost");
+                globalSuspicion -= 2;
+                if (globalSuspicion < 0) globalSuspicion = 0;
+                money -= betAmount;
+                break;
+
+            default: print("Something went wrong"); break;
+        }
+
+        if (money <= 0)  // Game Over
+        {
+            round = 10;
+            gameWon = false;
+        }
+
+        raceResultDisplay.SetState(result);
+    }
+
+    public void NextRound()
+    {
+        round++;
+
+        if (round > maxRounds) // Max Rounds
+        {
+            if (money > startingMoney) PlayerEndedWithProfit(money - startingMoney);
+            else { PlayerEndedWithoutProfit(); gameWon = false; }  // You Lose :(
+
+            round = 1;
+            State = GameState.RESULTS;
         }
         else
         {
-            raceResults = false;
+            betAmount = 0;
+            State = GameState.BETTING;
         }
-
-        State = GameState.RESULTS;
-    }
-
-    private void PlayerWon()
-    {
-        
-    }
-
-    private void PlayerLost()
-    {
-        
     }
 
     private void UpdateScene()
@@ -110,8 +162,18 @@ public class RoundController : MonoBehaviour
         }
     }
 
+    public void ResetGame()
+    {
+        globalSuspicion = 0;
+        raceSuspicion = 0;
+        money = startingMoney;
+        betAmount = 0;
 
-    private void Awake() { instance = this; }
+        gameWon = true;
+    }
+
+
+    private void Awake() { instance = this; money = startingMoney; gameWon = true; }
 
     // Load Main Menu when app starts
     void Start() { if (State == GameState.STARTUP) State = GameState.MAIN; }

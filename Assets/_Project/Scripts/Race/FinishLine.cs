@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class FinishLine : MonoBehaviour
@@ -8,21 +9,26 @@ public class FinishLine : MonoBehaviour
         HorseController.OnCrossFinish += OnHorseFinishedRace;
     }
 
+    private void OnDisable()
+    {
+        HorseController.OnCrossFinish -= OnHorseFinishedRace;
+    }
+
     public void OnHorseFinishedRace(HorseController horse)
     {
         if (!horse.IsPlayer)
         {
-            RoundController.instance.RaceResult(RaceResults.Lose);
+            RoundController.instance.DisplayRaceResult(RaceResults.Lose);
             return;
         }
 
         if (horse.DistanceTraveled < margin.transform.position.x)
         {
-            RoundController.instance.RaceResult(RaceResults.Win);
+            RoundController.instance.DisplayRaceResult(RaceResults.Win);
             return;
         }
 
-        RoundController.instance.RaceResult(RaceResults.CaughtCheating);
+        RoundController.instance.DisplayRaceResult(RaceResults.CaughtCheating);
     }
 
     [SerializeField] private TiledSpriteSizeSetter checkers;

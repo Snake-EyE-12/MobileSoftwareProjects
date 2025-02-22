@@ -16,6 +16,21 @@ public class RacerUI : MonoBehaviour {
     float time = 0;
 
     void Start() {
+        setValues(
+            RoundController.instance.globalSuspicion,
+            RoundController.instance.maxSuspicion,
+            RoundController.instance.betAmount,
+            RoundController.instance.betType
+            );
+    }
+
+    private void setValues(float sus, float maxsus, int bet, BetType btype)
+    {
+        suspicion = sus;
+        maxSuspicion = maxsus;
+        betAmount = bet;
+        betType = btype;
+
         updateUI();
     }
 
