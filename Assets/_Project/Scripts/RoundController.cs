@@ -143,6 +143,7 @@ public class RoundController : MonoBehaviour
                 default: break;  // Loading screen?
             }
 
+            SoundManager.instance.Stop();
             prevState = State;
         }
     }

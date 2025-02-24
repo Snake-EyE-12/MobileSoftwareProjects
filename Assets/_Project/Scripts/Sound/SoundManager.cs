@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using NaughtyAttributes;
+using NUnit.Framework;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -30,7 +32,11 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-
+    public void Stop()
+    {
+        musicSource?.Stop();
+        sfxSource?.Stop();
+    }
 }
 
 [Serializable]
