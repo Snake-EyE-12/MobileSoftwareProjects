@@ -15,7 +15,6 @@ public abstract class GameplayButton : MonoBehaviour, IDragHandler, IEndDragHand
     protected RectTransform itemRectTransform;
     protected Vector3 originalPosition;
 
-
     private void Awake()
     {
         item = gameObject;
@@ -33,7 +32,6 @@ public abstract class GameplayButton : MonoBehaviour, IDragHandler, IEndDragHand
             itemRectTransform.position = originalPosition;
         }
     }
-
 
     protected void Move(PointerEventData eventData)
     {
