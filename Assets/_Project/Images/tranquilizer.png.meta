@@ -235,7 +235,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tranquilizer_0: -5552390378372755272
+      tranquilizer_1: -7106161407481610559
+      tranquilizer_2: 2376708426913916920
+      tranquilizer_3: 7253128329219895972
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

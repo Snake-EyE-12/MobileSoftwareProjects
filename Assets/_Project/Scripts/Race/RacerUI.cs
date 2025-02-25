@@ -47,7 +47,7 @@ public class RacerUI : MonoBehaviour {
     void Update() {
         if (raceTime) {
             time += Time.deltaTime;
-            timerTxt.text = "Time: " + time;
+            timerTxt.text = "Time: " + time.ToString("#.00");
         }
     }
 
