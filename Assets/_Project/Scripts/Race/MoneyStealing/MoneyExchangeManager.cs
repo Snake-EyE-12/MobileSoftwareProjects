@@ -39,7 +39,8 @@ public class MoneyExchangeManager : MonoBehaviour {
 
     public void toggleClick(GameObject g) {
         g.SetActive(!g.activeSelf);
-        GetComponent<RectTransform>().anchoredPosition = (g.activeSelf) ? new Vector3(0, 240, 0) : new Vector3(0, -340, 0);
+        GetComponent<RectTransform>().position = (g.activeSelf) ? new Vector3(0, 130, 0) : new Vector3(0, -340, 0);
+        //GetComponent<RectTransform>().anchoredPosition = (g.activeSelf) ? new Vector3(0, 240, 0) : new Vector3(0, -340, 0);
         //GetComponent<RectTransform>().localPosition = (g.activeSelf) ? new Vector3(0, 240, 0) : new Vector3(0, -340, 0);
 	}
 }

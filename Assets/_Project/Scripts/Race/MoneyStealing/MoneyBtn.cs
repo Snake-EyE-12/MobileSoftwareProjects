@@ -8,11 +8,15 @@ public class MoneyBtn : GameplayButton {
     int moneyLose;
     int yourMoney;
 	int betAmount;
-	Vector3 initialpos;
+	Vector3 mousePos;
 	
 	void Start() {
 		canDrag = true;
     }
+
+	void Update() {
+		mousePos = Input.mousePosition;
+	}
 
 	public void setValues(int gain, int lose, int your, int bet) {
 		moneyGain = gain;
@@ -38,38 +42,24 @@ public class MoneyBtn : GameplayButton {
 	}
 
 	protected override bool Condition(PointerEventData eventData) {
-		//if (EventSystem.current.currentSelectedGameObject == null) {
-		//	return false;
-		//}
-
-		float betDistance = Vector2.Distance(moneyManager.betArea.transform.position, itemRectTransform.position);
-		float yourDistance = Vector2.Distance(moneyManager.yourArea.transform.position, itemRectTransform.position);
-
-		if (betDistance <= detectionRadius || yourDistance <= detectionRadius) {
+		if (mousePos.y <= 465 && ((mousePos.x >= 285 && mousePos.x <= 440) || (mousePos.x >= 1020 && mousePos.x <= 1175))) {
 			return true;
 		}
 
-		//if (EventSystem.current.currentSelectedGameObject.name == "YourMoneyArea" ||
-		//	EventSystem.current.currentSelectedGameObject.name == "BetMoneyArea") {
-		//	return true;
-		//}
-
-		//if ((Vector2.Distance(moneyManager.yourArea.transform.position, Camera.main.ScreenToWorldPoint(itemRectTransform.position)) <= detectionRadius) || 
-		//	Vector2.Distance(moneyManager.betArea.transform.position, Camera.main.ScreenToWorldPoint(itemRectTransform.position)) <= detectionRadius) {
-		//	return true;
-		//}
+		//285, 440 x || 0, 465 y your area
+		//1020, 1175 x || 0, 465 y bet area
 
 		return false;
 	}
 
 	protected override void Drop(PointerEventData eventData) {
-		if (Vector2.Distance(moneyManager.yourArea.transform.position, Camera.main.ScreenToWorldPoint(itemRectTransform.position)) <= detectionRadius) {
+		if (mousePos.y <= 465 && (mousePos.x >= 285 && mousePos.x <= 440)) {
 			giveOtake(false);
 
 			return;
 		}
 
-		if (Vector2.Distance(moneyManager.betArea.transform.position, Camera.main.ScreenToWorldPoint(itemRectTransform.position)) <= detectionRadius) {
+		if (mousePos.y <= 465 && (mousePos.x >= 1020 && mousePos.x <= 1175)) {
 			giveOtake(true);
 
 			return;
