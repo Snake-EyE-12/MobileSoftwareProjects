@@ -13,8 +13,8 @@ public class MoneyExchangeManager : MonoBehaviour {
     public GameObject betArea;
 
     void Start() {
-        yourMoney = 100;
-        betMoney = 100;
+        yourMoney = RoundController.instance.money;
+        betMoney = RoundController.instance.betAmount;
 		yourTxt.text = "Your Money: " + yourMoney;
 		betTxt.text = "Bet Money: " + betMoney;
 		updateButtons(10);
@@ -33,6 +33,8 @@ public class MoneyExchangeManager : MonoBehaviour {
     public void updateMoney(int your, int bet) {
         yourMoney = your;
         betMoney = bet;
+        RoundController.instance.money = yourMoney;
+        RoundController.instance.betAmount = betMoney;
         yourTxt.text = "Your Money: " + yourMoney;
         betTxt.text = "Bet Money: " + betMoney;
     }
@@ -40,7 +42,5 @@ public class MoneyExchangeManager : MonoBehaviour {
     public void toggleClick(GameObject g) {
         g.SetActive(!g.activeSelf);
         GetComponent<RectTransform>().position = (g.activeSelf) ? new Vector3(0, 130, 0) : new Vector3(0, -340, 0);
-        //GetComponent<RectTransform>().anchoredPosition = (g.activeSelf) ? new Vector3(0, 240, 0) : new Vector3(0, -340, 0);
-        //GetComponent<RectTransform>().localPosition = (g.activeSelf) ? new Vector3(0, 240, 0) : new Vector3(0, -340, 0);
 	}
 }

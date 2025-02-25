@@ -11,7 +11,6 @@ public class SettingsDataBinding : MonoBehaviour
         SetCurrentData();
     }
 
-
     public void OnBrightnessValueChanged(float value)
     {
         BindBrightness(value);
@@ -74,8 +73,6 @@ public class SettingsDataBinding : MonoBehaviour
         mixer.SetFloat("VolumeSFX", volume);
     }
 
-
-
     private void SetCurrentData()
     {
         SetBrightnessSlider(PlayerPrefs.GetFloat("Brightness", 1f));
@@ -101,7 +98,6 @@ public class SettingsDataBinding : MonoBehaviour
         PlayerPrefs.SetInt("Losses", losses + 1);
         UpdateWinLossRatio();
     }
-    
 
     [SerializeField] private Slider brightnessSlider;
     private void SetBrightnessSlider(float value)

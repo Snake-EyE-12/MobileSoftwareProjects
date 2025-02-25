@@ -12,10 +12,20 @@ public class RacerUI : MonoBehaviour {
     [SerializeField] float maxSuspicion;
     [SerializeField] BetType betType;
     [SerializeField] int betAmount;
-    bool countTime = false;
     float time = 0;
+    public bool raceTime = false;
 
-    void Start() {
+	private void OnEnable() {
+        RaceController.OnRaceStart += racing;
+        RaceController.OnRacePause += racing;
+	}
+
+	private void OnDisable() {
+	    RaceController.OnRaceStart -= racing;
+        RaceController.OnRacePause -= racing;
+	}
+
+	void Start() {
         setValues(
             RoundController.instance.globalSuspicion,
             RoundController.instance.maxSuspicion,
@@ -35,10 +45,14 @@ public class RacerUI : MonoBehaviour {
     }
 
     void Update() {
-        if (countTime) {
+        if (raceTime) {
             time += Time.deltaTime;
             timerTxt.text = "Time: " + time;
         }
+    }
+
+    void racing() {
+        raceTime = !raceTime;
     }
 
     public void toggleClick(GameObject bar) {

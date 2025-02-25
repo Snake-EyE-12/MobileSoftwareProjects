@@ -34,10 +34,6 @@ public class RaceController : MonoBehaviour
     
     //[SerializeField] private float tickDelay;
     //[SerializeField] private Margin margin;
-    
-    
-    
-    
     //
     // private void Update()
     // {

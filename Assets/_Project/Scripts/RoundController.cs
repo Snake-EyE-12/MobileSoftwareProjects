@@ -97,6 +97,7 @@ public class RoundController : MonoBehaviour
             gameWon = false;
         }
 
+        GameObject.Find("RaceUI").GetComponent<RacerUI>().raceTime = false;
         raceResultDisplay.SetState(result);
     }
 
